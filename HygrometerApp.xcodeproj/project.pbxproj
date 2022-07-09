@@ -1,0 +1,446 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BA3DBC3B2879B438005BA6F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */; };
+		BA3DBC3D2879B438005BA6F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */; };
+		BA3DBC3F2879B438005BA6F0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3E2879B438005BA6F0 /* MainViewController.swift */; };
+		BA3DBC442879B439005BA6F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA3DBC432879B439005BA6F0 /* Assets.xcassets */; };
+		BA3DBC472879B439005BA6F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA3DBC452879B439005BA6F0 /* LaunchScreen.storyboard */; };
+		BA3DBC512879B553005BA6F0 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC502879B553005BA6F0 /* AddViewController.swift */; };
+		BA3DBC532879B562005BA6F0 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC522879B562005BA6F0 /* ListViewController.swift */; };
+		BA3DBC552879BE14005BA6F0 /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC542879BE14005BA6F0 /* CityViewController.swift */; };
+		BA3DBC582879C2C4005BA6F0 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC572879C2C4005BA6F0 /* Then */; };
+		BA3DBC5B2879C349005BA6F0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC5A2879C349005BA6F0 /* SnapKit */; };
+		BA3DBC5E2879C36F005BA6F0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC5D2879C36F005BA6F0 /* Alamofire */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BA3DBC372879B438005BA6F0 /* HygrometerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HygrometerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BA3DBC3E2879B438005BA6F0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BA3DBC432879B439005BA6F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BA3DBC462879B439005BA6F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BA3DBC482879B439005BA6F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA3DBC502879B553005BA6F0 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		BA3DBC522879B562005BA6F0 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		BA3DBC542879BE14005BA6F0 /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA3DBC342879B438005BA6F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA3DBC5E2879C36F005BA6F0 /* Alamofire in Frameworks */,
+				BA3DBC582879C2C4005BA6F0 /* Then in Frameworks */,
+				BA3DBC5B2879C349005BA6F0 /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BA3DBC2E2879B438005BA6F0 = {
+			isa = PBXGroup;
+			children = (
+				BA3DBC392879B438005BA6F0 /* HygrometerApp */,
+				BA3DBC382879B438005BA6F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BA3DBC382879B438005BA6F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA3DBC372879B438005BA6F0 /* HygrometerApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA3DBC392879B438005BA6F0 /* HygrometerApp */ = {
+			isa = PBXGroup;
+			children = (
+				BA3DBC4E2879B4CF005BA6F0 /* Sources */,
+				BA3DBC5F2879C392005BA6F0 /* Resources */,
+				BA3DBC452879B439005BA6F0 /* LaunchScreen.storyboard */,
+				BA3DBC482879B439005BA6F0 /* Info.plist */,
+			);
+			path = HygrometerApp;
+			sourceTree = "<group>";
+		};
+		BA3DBC4E2879B4CF005BA6F0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */,
+				BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */,
+				BA3DBC4F2879B4D5005BA6F0 /* ViewControllers */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		BA3DBC4F2879B4D5005BA6F0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BA3DBC3E2879B438005BA6F0 /* MainViewController.swift */,
+				BA3DBC542879BE14005BA6F0 /* CityViewController.swift */,
+				BA3DBC502879B553005BA6F0 /* AddViewController.swift */,
+				BA3DBC522879B562005BA6F0 /* ListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BA3DBC5F2879C392005BA6F0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BA3DBC432879B439005BA6F0 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA3DBC362879B438005BA6F0 /* HygrometerApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA3DBC4B2879B439005BA6F0 /* Build configuration list for PBXNativeTarget "HygrometerApp" */;
+			buildPhases = (
+				BA3DBC332879B438005BA6F0 /* Sources */,
+				BA3DBC342879B438005BA6F0 /* Frameworks */,
+				BA3DBC352879B438005BA6F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HygrometerApp;
+			packageProductDependencies = (
+				BA3DBC572879C2C4005BA6F0 /* Then */,
+				BA3DBC5A2879C349005BA6F0 /* SnapKit */,
+				BA3DBC5D2879C36F005BA6F0 /* Alamofire */,
+			);
+			productName = HygrometerApp;
+			productReference = BA3DBC372879B438005BA6F0 /* HygrometerApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA3DBC2F2879B438005BA6F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					BA3DBC362879B438005BA6F0 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = BA3DBC322879B438005BA6F0 /* Build configuration list for PBXProject "HygrometerApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BA3DBC2E2879B438005BA6F0;
+			packageReferences = (
+				BA3DBC562879C2C4005BA6F0 /* XCRemoteSwiftPackageReference "Then" */,
+				BA3DBC592879C349005BA6F0 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				BA3DBC5C2879C36F005BA6F0 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
+			productRefGroup = BA3DBC382879B438005BA6F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA3DBC362879B438005BA6F0 /* HygrometerApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA3DBC352879B438005BA6F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA3DBC472879B439005BA6F0 /* LaunchScreen.storyboard in Resources */,
+				BA3DBC442879B439005BA6F0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA3DBC332879B438005BA6F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA3DBC3F2879B438005BA6F0 /* MainViewController.swift in Sources */,
+				BA3DBC3B2879B438005BA6F0 /* AppDelegate.swift in Sources */,
+				BA3DBC512879B553005BA6F0 /* AddViewController.swift in Sources */,
+				BA3DBC532879B562005BA6F0 /* ListViewController.swift in Sources */,
+				BA3DBC552879BE14005BA6F0 /* CityViewController.swift in Sources */,
+				BA3DBC3D2879B438005BA6F0 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BA3DBC452879B439005BA6F0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA3DBC462879B439005BA6F0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BA3DBC492879B439005BA6F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BA3DBC4A2879B439005BA6F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA3DBC4C2879B439005BA6F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2ZQR76M3UH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HygrometerApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ppak.HygrometerApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BA3DBC4D2879B439005BA6F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2ZQR76M3UH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HygrometerApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ppak.HygrometerApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA3DBC322879B438005BA6F0 /* Build configuration list for PBXProject "HygrometerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA3DBC492879B439005BA6F0 /* Debug */,
+				BA3DBC4A2879B439005BA6F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA3DBC4B2879B439005BA6F0 /* Build configuration list for PBXNativeTarget "HygrometerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA3DBC4C2879B439005BA6F0 /* Debug */,
+				BA3DBC4D2879B439005BA6F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BA3DBC562879C2C4005BA6F0 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		BA3DBC592879C349005BA6F0 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		BA3DBC5C2879C36F005BA6F0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BA3DBC572879C2C4005BA6F0 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA3DBC562879C2C4005BA6F0 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		BA3DBC5A2879C349005BA6F0 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA3DBC592879C349005BA6F0 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		BA3DBC5D2879C36F005BA6F0 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA3DBC5C2879C36F005BA6F0 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = BA3DBC2F2879B438005BA6F0 /* Project object */;
+}
