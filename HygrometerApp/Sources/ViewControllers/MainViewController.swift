@@ -29,6 +29,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupLayouts()
         setupConstraints()
+        setupStyles()
     }
     
     // MARK: - Configuration
@@ -45,5 +46,11 @@ final class MainViewController: UIViewController {
         pageViewController.view.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    
+    /// ViewController 내에 style을 설정합니다.
+    private func setupStyles() {
+        view.backgroundColor = .white
     }
 }
