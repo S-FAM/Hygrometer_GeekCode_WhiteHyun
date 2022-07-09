@@ -52,5 +52,6 @@ final class MainViewController: UIViewController {
     /// ViewController 내에 style을 설정합니다.
     private func setupStyles() {
         view.backgroundColor = .white
+        navigationController?.navigationBar.isHidden = true
     }
 }
