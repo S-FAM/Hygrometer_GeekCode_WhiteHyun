@@ -27,5 +27,23 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLayouts()
+        setupConstraints()
+    }
+    
+    // MARK: - Configuration
+    
+    
+    /// view에 올려놓을 프로퍼티를 설정합니다. `addSubview` 메서드를 여기에 작성합니다.
+    private func setupLayouts() {
+        view.addSubview(pageViewController.view)
+    }
+    
+    
+    /// 프로퍼티의 제약조건을 설정합니다.
+    private func setupConstraints() {
+        pageViewController.view.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }
