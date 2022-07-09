@@ -28,6 +28,11 @@ final class MainViewController: UIViewController {
         $0.tintColor = .label
     }
     
+    private lazy var plusButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "plus"), for: .normal)
+        $0.tintColor = .label
+    }
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -43,6 +48,7 @@ final class MainViewController: UIViewController {
     private func setupLayouts() {
         view.addSubview(pageViewController.view)
         view.addSubview(listButton)
+        view.addSubview(plusButton)
     }
     
     
@@ -55,6 +61,12 @@ final class MainViewController: UIViewController {
         
         listButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(25)
+            make.width.height.equalTo(50)
+        }
+        
+        plusButton.snp.makeConstraints { make in
+            make.top.equalTo(listButton.snp.bottom).inset(5)
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(25)
             make.width.height.equalTo(50)
         }
