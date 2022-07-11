@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C15D8EE287C490800486F85 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15D8ED287C490800486F85 /* WeatherModel.swift */; };
 		BA3DBC3B2879B438005BA6F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */; };
 		BA3DBC3D2879B438005BA6F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */; };
 		BA3DBC3F2879B438005BA6F0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3E2879B438005BA6F0 /* MainViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C15D8ED287C490800486F85 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		BA3DBC372879B438005BA6F0 /* HygrometerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HygrometerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */,
 				BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */,
+				9C15D8ED287C490800486F85 /* WeatherModel.swift */,
 				BA3DBC4F2879B4D5005BA6F0 /* ViewControllers */,
 			);
 			path = Sources;
@@ -185,6 +188,7 @@
 			files = (
 				BA3DBC3F2879B438005BA6F0 /* MainViewController.swift in Sources */,
 				BA3DBC3B2879B438005BA6F0 /* AppDelegate.swift in Sources */,
+				9C15D8EE287C490800486F85 /* WeatherModel.swift in Sources */,
 				BA3DBC512879B553005BA6F0 /* AddViewController.swift in Sources */,
 				BA3DBC532879B562005BA6F0 /* ListViewController.swift in Sources */,
 				BA3DBC552879BE14005BA6F0 /* CityViewController.swift in Sources */,
@@ -325,9 +329,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2ZQR76M3UH;
+				DEVELOPMENT_TEAM = U8ZWF5U9ZA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HygrometerApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -341,6 +346,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ppak.HygrometerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -352,9 +358,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2ZQR76M3UH;
+				DEVELOPMENT_TEAM = U8ZWF5U9ZA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HygrometerApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -368,6 +375,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ppak.HygrometerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
