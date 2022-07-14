@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C15D8EE287C490800486F85 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15D8ED287C490800486F85 /* WeatherModel.swift */; };
+		9C15D8F0287C5D3D00486F85 /* PrivateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15D8EF287C5D3D00486F85 /* PrivateInfo.swift */; };
+		9C15D8F3287C5D5B00486F85 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15D8F2287C5D5B00486F85 /* API.swift */; };
+		9CAAC4DF28806FAC005B2136 /* GpsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4DE28806FAC005B2136 /* GpsModel.swift */; };
+		9CAAC4E1288075D9005B2136 /* GpsParamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4E0288075D9005B2136 /* GpsParamModel.swift */; };
+		9CAAC4E328807F0C005B2136 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4E228807F0C005B2136 /* WeatherModel.swift */; };
+		9CAAC4E7288080FC005B2136 /* didSaveWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4E6288080FC005B2136 /* didSaveWeatherModel.swift */; };
 		BA3DBC3B2879B438005BA6F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */; };
 		BA3DBC3D2879B438005BA6F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */; };
 		BA3DBC3F2879B438005BA6F0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3E2879B438005BA6F0 /* MainViewController.swift */; };
@@ -22,7 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9C15D8ED287C490800486F85 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		9C15D8EF287C5D3D00486F85 /* PrivateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateInfo.swift; sourceTree = "<group>"; };
+		9C15D8F2287C5D5B00486F85 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9CAAC4DE28806FAC005B2136 /* GpsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsModel.swift; sourceTree = "<group>"; };
+		9CAAC4E0288075D9005B2136 /* GpsParamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsParamModel.swift; sourceTree = "<group>"; };
+		9CAAC4E228807F0C005B2136 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		9CAAC4E6288080FC005B2136 /* didSaveWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = didSaveWeatherModel.swift; sourceTree = "<group>"; };
 		BA3DBC372879B438005BA6F0 /* HygrometerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HygrometerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C15D8F1287C5D4800486F85 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9C15D8F2287C5D5B00486F85 /* API.swift */,
+				9C15D8EF287C5D3D00486F85 /* PrivateInfo.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		BA3DBC2E2879B438005BA6F0 = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +100,10 @@
 			children = (
 				BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */,
 				BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */,
-				9C15D8ED287C490800486F85 /* WeatherModel.swift */,
+				9CAAC4E0288075D9005B2136 /* GpsParamModel.swift */,
+				9CAAC4DE28806FAC005B2136 /* GpsModel.swift */,
+				9CAAC4E228807F0C005B2136 /* WeatherModel.swift */,
+				9CAAC4E6288080FC005B2136 /* didSaveWeatherModel.swift */,
 				BA3DBC4F2879B4D5005BA6F0 /* ViewControllers */,
 			);
 			path = Sources;
@@ -102,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				BA3DBC432879B439005BA6F0 /* Assets.xcassets */,
+				9C15D8F1287C5D4800486F85 /* Network */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -188,10 +211,15 @@
 			files = (
 				BA3DBC3F2879B438005BA6F0 /* MainViewController.swift in Sources */,
 				BA3DBC3B2879B438005BA6F0 /* AppDelegate.swift in Sources */,
-				9C15D8EE287C490800486F85 /* WeatherModel.swift in Sources */,
+				9CAAC4DF28806FAC005B2136 /* GpsModel.swift in Sources */,
+				9C15D8F0287C5D3D00486F85 /* PrivateInfo.swift in Sources */,
 				BA3DBC512879B553005BA6F0 /* AddViewController.swift in Sources */,
+				9CAAC4E7288080FC005B2136 /* didSaveWeatherModel.swift in Sources */,
 				BA3DBC532879B562005BA6F0 /* ListViewController.swift in Sources */,
 				BA3DBC552879BE14005BA6F0 /* CityViewController.swift in Sources */,
+				9C15D8F3287C5D5B00486F85 /* API.swift in Sources */,
+				9CAAC4E328807F0C005B2136 /* WeatherModel.swift in Sources */,
+				9CAAC4E1288075D9005B2136 /* GpsParamModel.swift in Sources */,
 				BA3DBC3D2879B438005BA6F0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,7 +288,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -314,7 +342,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
