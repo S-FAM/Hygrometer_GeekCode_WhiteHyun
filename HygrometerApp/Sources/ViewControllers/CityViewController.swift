@@ -47,6 +47,7 @@ class CityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayouts()
+        setupConstraints()
     }
     
     // MARK: - Configuration
@@ -56,6 +57,15 @@ class CityViewController: UIViewController {
         view.addSubview(containerView)
         [cityTitleLabel, humidityLabel, phraseLabel].forEach {
             containerView.addArrangedSubview($0)
+        }
+    }
+    
+    
+    /// 프로퍼티의 제약조건을 설정합니다.
+    private func setupConstraints() {
+        containerView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(56)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }
