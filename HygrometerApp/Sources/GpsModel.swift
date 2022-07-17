@@ -29,7 +29,6 @@ struct Record: Codable {
 
 // MARK: - Result
 struct Result: Codable {
-    let crs, type: String
     let items: [Item]
 }
 
