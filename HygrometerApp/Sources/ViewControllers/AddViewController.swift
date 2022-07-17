@@ -35,7 +35,7 @@ class AddViewController: UIViewController {
     func getGpsApi( searchStr: String, completionHandler: @escaping ([Item]) -> Void ) {
 //        let urlString = API.makeString(With: [ApiType.gps.host,"key=\(Private.gpsSecretKey)&query=\(searchStr)&request=search&type=district&category=L4"])
         
-        let urlStr = API.makeString(With: [ApiType.gps.host])
+        let urlStr = API.makeString(with: [ApiType.gps.host])
         
         let parameters = GpsParamModel(
           key: Private.gpsSecretKey,
@@ -69,7 +69,7 @@ class AddViewController: UIViewController {
 //        let long = "-122.40"
 //        let address = "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(long)&appid=\(serviceKey)"
         let address = "https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=93d5e000c78231dfa9d072fe49692c9d&lang=kr"
-        let urlStr = API.makeString(With: [ApiType.weather.host])
+        let urlStr = API.makeString(with: [ApiType.weather.host])
         
         print("urlStr : \(urlStr)")
         

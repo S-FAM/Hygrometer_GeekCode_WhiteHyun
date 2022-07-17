@@ -13,8 +13,8 @@ public struct API {
     
     /// Add String
     /// - Parameter stringArray: 여러개의 string 붙이기
-    /// - Returns: 배열로 들어온 string 붙여서 하나라 리턴
-    static public func makeString(With stringArray: [String]) -> String {
+    /// - Returns: 배열로 들어온 string 붙여서 하나로 리턴
+    static public func makeString(with stringArray: [String]) -> String {
         
         var fullStr: String = ""
         for str in stringArray {
@@ -24,30 +24,36 @@ public struct API {
         return fullStr
     }
     
-    static public func getDataReturnData(url: String, successHandler: @escaping (_ resultData: Data?)-> Void, errorHandler: @escaping (_ error: Error)-> Void) -> Void {
+    
+    /// API로 부터 Data를 디코딩하는 함수
+    /// - Parameters:
+    ///   - url: 연결하려는 URL
+    ///   - successHandler: 성공시 사용하는 Completion, Data를 가지고 있음
+    ///   - errorHandler: 실패시 사용하는 Completion , Error 메세지를 가지고 있음
+    static public func getDataReturnData(url: String, successHandler: @escaping (_ resultData: Data?)-> Void, errorHandler: @escaping (_ error: Error)-> Void) {
         
-        let session = URLSession.shared;
+        let session = URLSession.shared
         if let reqUrl = URL(string: url) {
-            session.dataTask(with: reqUrl) { (data, response, error) in
+            session.dataTask(with: reqUrl) { data, response, error in
                 
                 if error != nil {
                     print("error\(String(describing: error))")
-                    errorHandler(error!);
+                    errorHandler(error!)
                 }else {
                     
-                    print("response\(String(describing: response))  data\(String(describing: data))");
+                    print("response\(String(describing: response))  data\(String(describing: data))")
                     
                     guard let rstData = data else {
-                        print("data is nil");
+                        print("data is nil")
                         //nil에 대한 대비를 해야하는가?!!??
-                        successHandler(nil);
-                        return;
+                        successHandler(nil)
+                        return
                     }
                    
                     successHandler(rstData)
                     
                 }
-            }.resume();
+            }.resume()
         }else {
             print("url is nil or empty")
         }
