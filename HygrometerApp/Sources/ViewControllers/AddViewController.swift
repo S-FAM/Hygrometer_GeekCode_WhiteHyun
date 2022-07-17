@@ -126,7 +126,6 @@ class AddViewController: UIViewController {
             cityListTableView.delegate = self
             cityListTableView.keyboardDismissMode = .onDrag
 
-//            cityListTableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: "CityTableViewCell")
 
             let sharedNib = UINib(nibName: "CityListTableViewCell", bundle: nil)
             self.cityListTableView.register(sharedNib, forCellReuseIdentifier: "CityListTableViewCell")
@@ -189,7 +188,6 @@ class AddViewController: UIViewController {
 //          lang: "kr"
 //        )
         
-        
         API.getDataReturnData(url: address) { resultData in
             
             guard let data = resultData else { return }
@@ -211,7 +209,6 @@ class AddViewController: UIViewController {
             guard let data = self.weatherModel else { return ""}
             
             print("data: \(data.weather[0].main)")
-    //        let main =
     //        let main = self.weatherModel.main
     //        print("main: \(main)")
             switch data.weather[0].main {
@@ -229,9 +226,6 @@ class AddViewController: UIViewController {
             }
         }
         
-        
-            
-        
 
     }
 
@@ -247,9 +241,6 @@ class AddViewController: UIViewController {
 
 //                    self.setWeatherAnimation()
                     
-                    
-                    
-                    
                 }
             } catch {
                 print("EquipmentList jsonDecoder fail error ::: \(error)")
@@ -264,7 +255,6 @@ extension AddViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
 //        self.searchString = searchText
-        // 도서목록
         self.searchCityList = self.cityList.filter({$0.title.lowercased().contains(searchText.lowercased())})
             if searchText == "" {
                 self.searchCityList = cityList
@@ -288,9 +278,6 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
- 
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityListTableViewCell", for: indexPath) as! CityListTableViewCell
         cell.selectionStyle = .none
@@ -304,7 +291,6 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CityListTableViewCell", for: indexPath) as! CityListTableViewCell
         
         
         let currentPoint = searchCityList[indexPath.row].point
