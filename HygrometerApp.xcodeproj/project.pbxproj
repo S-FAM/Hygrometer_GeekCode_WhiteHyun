@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C15D8F0287C5D3D00486F85 /* PrivateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15D8EF287C5D3D00486F85 /* PrivateInfo.swift */; };
+		9C15D8F3287C5D5B00486F85 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15D8F2287C5D5B00486F85 /* API.swift */; };
+		9CAAC4DF28806FAC005B2136 /* GpsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4DE28806FAC005B2136 /* GpsModel.swift */; };
+		9CAAC4E1288075D9005B2136 /* GpsParamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4E0288075D9005B2136 /* GpsParamModel.swift */; };
+		9CAAC4E328807F0C005B2136 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4E228807F0C005B2136 /* WeatherModel.swift */; };
+		9CAAC4E7288080FC005B2136 /* didSaveWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4E6288080FC005B2136 /* didSaveWeatherModel.swift */; };
+		9CD4F72B28844F4200DDC7FD /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4F72A28844F4200DDC7FD /* Extentions.swift */; };
+		9CD4F72E288458D600DDC7FD /* CityListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4F72C288458D600DDC7FD /* CityListTableViewCell.swift */; };
+		9CD4F72F288458D600DDC7FD /* CityListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CD4F72D288458D600DDC7FD /* CityListTableViewCell.xib */; };
+		9CD4F732288458EA00DDC7FD /* WeatherListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4F730288458EA00DDC7FD /* WeatherListTableViewCell.swift */; };
+		9CD4F733288458EA00DDC7FD /* WeatherListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CD4F731288458EA00DDC7FD /* WeatherListTableViewCell.xib */; };
 		BA3DBC3B2879B438005BA6F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */; };
 		BA3DBC3D2879B438005BA6F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */; };
 		BA3DBC3F2879B438005BA6F0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DBC3E2879B438005BA6F0 /* MainViewController.swift */; };
@@ -21,6 +32,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C15D8EF287C5D3D00486F85 /* PrivateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateInfo.swift; sourceTree = "<group>"; };
+		9C15D8F2287C5D5B00486F85 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9CAAC4DE28806FAC005B2136 /* GpsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsModel.swift; sourceTree = "<group>"; };
+		9CAAC4E0288075D9005B2136 /* GpsParamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsParamModel.swift; sourceTree = "<group>"; };
+		9CAAC4E228807F0C005B2136 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		9CAAC4E6288080FC005B2136 /* didSaveWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = didSaveWeatherModel.swift; sourceTree = "<group>"; };
+		9CD4F72A28844F4200DDC7FD /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		9CD4F72C288458D600DDC7FD /* CityListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTableViewCell.swift; sourceTree = "<group>"; };
+		9CD4F72D288458D600DDC7FD /* CityListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityListTableViewCell.xib; sourceTree = "<group>"; };
+		9CD4F730288458EA00DDC7FD /* WeatherListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListTableViewCell.swift; sourceTree = "<group>"; };
+		9CD4F731288458EA00DDC7FD /* WeatherListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherListTableViewCell.xib; sourceTree = "<group>"; };
 		BA3DBC372879B438005BA6F0 /* HygrometerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HygrometerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +69,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C15D8F1287C5D4800486F85 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9C15D8F2287C5D5B00486F85 /* API.swift */,
+				9C15D8EF287C5D3D00486F85 /* PrivateInfo.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9CD4F734288458F200DDC7FD /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				9CD4F72C288458D600DDC7FD /* CityListTableViewCell.swift */,
+				9CD4F72D288458D600DDC7FD /* CityListTableViewCell.xib */,
+				9CD4F730288458EA00DDC7FD /* WeatherListTableViewCell.swift */,
+				9CD4F731288458EA00DDC7FD /* WeatherListTableViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		BA3DBC2E2879B438005BA6F0 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +121,10 @@
 			children = (
 				BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */,
 				BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */,
+				9CAAC4E0288075D9005B2136 /* GpsParamModel.swift */,
+				9CAAC4DE28806FAC005B2136 /* GpsModel.swift */,
+				9CAAC4E228807F0C005B2136 /* WeatherModel.swift */,
+				9CAAC4E6288080FC005B2136 /* didSaveWeatherModel.swift */,
 				BA3DBC4F2879B4D5005BA6F0 /* ViewControllers */,
 			);
 			path = Sources;
@@ -91,6 +137,7 @@
 				BA3DBC542879BE14005BA6F0 /* CityViewController.swift */,
 				BA3DBC502879B553005BA6F0 /* AddViewController.swift */,
 				BA3DBC522879B562005BA6F0 /* ListViewController.swift */,
+				9CD4F734288458F200DDC7FD /* TableViewCells */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -98,7 +145,9 @@
 		BA3DBC5F2879C392005BA6F0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9CD4F72A28844F4200DDC7FD /* Extentions.swift */,
 				BA3DBC432879B439005BA6F0 /* Assets.xcassets */,
+				9C15D8F1287C5D4800486F85 /* Network */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -171,8 +220,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CD4F733288458EA00DDC7FD /* WeatherListTableViewCell.xib in Resources */,
 				BA3DBC472879B439005BA6F0 /* LaunchScreen.storyboard in Resources */,
 				BA3DBC442879B439005BA6F0 /* Assets.xcassets in Resources */,
+				9CD4F72F288458D600DDC7FD /* CityListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,10 +236,19 @@
 			files = (
 				BA3DBC3F2879B438005BA6F0 /* MainViewController.swift in Sources */,
 				BA3DBC3B2879B438005BA6F0 /* AppDelegate.swift in Sources */,
+				9CAAC4DF28806FAC005B2136 /* GpsModel.swift in Sources */,
+				9C15D8F0287C5D3D00486F85 /* PrivateInfo.swift in Sources */,
 				BA3DBC512879B553005BA6F0 /* AddViewController.swift in Sources */,
+				9CAAC4E7288080FC005B2136 /* didSaveWeatherModel.swift in Sources */,
 				BA3DBC532879B562005BA6F0 /* ListViewController.swift in Sources */,
 				BA3DBC552879BE14005BA6F0 /* CityViewController.swift in Sources */,
+				9CD4F72B28844F4200DDC7FD /* Extentions.swift in Sources */,
+				9C15D8F3287C5D5B00486F85 /* API.swift in Sources */,
+				9CAAC4E328807F0C005B2136 /* WeatherModel.swift in Sources */,
+				9CAAC4E1288075D9005B2136 /* GpsParamModel.swift in Sources */,
+				9CD4F72E288458D600DDC7FD /* CityListTableViewCell.swift in Sources */,
 				BA3DBC3D2879B438005BA6F0 /* SceneDelegate.swift in Sources */,
+				9CD4F732288458EA00DDC7FD /* WeatherListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -310,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -325,9 +385,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2ZQR76M3UH;
+				DEVELOPMENT_TEAM = U8ZWF5U9ZA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HygrometerApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -341,6 +402,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ppak.HygrometerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -352,9 +414,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2ZQR76M3UH;
+				DEVELOPMENT_TEAM = U8ZWF5U9ZA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HygrometerApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -368,6 +431,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ppak.HygrometerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
