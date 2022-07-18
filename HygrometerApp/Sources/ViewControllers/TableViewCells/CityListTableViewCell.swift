@@ -32,7 +32,7 @@ class CityListTableViewCell: UITableViewCell {
         
         self.addSubview(containerView)
         containerView.snp.makeConstraints { make in
-            make.top.bottom.leading.bottom.equalTo(self)
+            make.edges.equalToSuperview()
             
         }
         containerView.backgroundColor = .white
@@ -44,7 +44,7 @@ class CityListTableViewCell: UITableViewCell {
         locationNameLabel.snp.makeConstraints { make in
             make.centerY.equalTo(self)
             make.width.equalTo(self).multipliedBy(0.4)
-            make.leading.equalTo(self).offset(self.frame.width * 0.05)
+            make.leading.equalTo(self).offset(self.frame.width * 0.07)
         }
         locationNameLabel.text = "수원시"
         locationNameLabel.textColor = UIColor.lightGray

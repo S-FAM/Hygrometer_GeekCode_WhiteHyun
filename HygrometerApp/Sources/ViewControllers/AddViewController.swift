@@ -90,7 +90,7 @@ class AddViewController: UIViewController {
             self.view.addSubview(emptyResultView)
             emptyResultView.snp.makeConstraints { make in
                 make.top.equalTo(cityListSearchBar.snp.bottom).offset(self.view.frame.height * 0.01)
-                make.leading.trailing.equalTo(cityListSearchBar)
+                make.leading.trailing.equalTo(cityListSearchBar.searchTextField)
                 make.bottom.equalTo(self.view.safeAreaLayoutGuide)
                 make.centerX.equalTo(self.view)
 
