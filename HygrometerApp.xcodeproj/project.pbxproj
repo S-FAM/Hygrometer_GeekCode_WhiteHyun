@@ -30,6 +30,7 @@
 		BA3DBC582879C2C4005BA6F0 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC572879C2C4005BA6F0 /* Then */; };
 		BA3DBC5B2879C349005BA6F0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC5A2879C349005BA6F0 /* SnapKit */; };
 		BA3DBC5E2879C36F005BA6F0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC5D2879C36F005BA6F0 /* Alamofire */; };
+		BA5FC6472887C9CF00A69902 /* GpsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5FC6462887C9CF00A69902 /* GpsResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		BA3DBC502879B553005BA6F0 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		BA3DBC522879B562005BA6F0 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		BA3DBC542879BE14005BA6F0 /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
+		BA5FC6462887C9CF00A69902 /* GpsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				BA21D3AA2887BE8A0073C422 /* GpsRequestModel.swift */,
+				BA5FC6462887C9CF00A69902 /* GpsResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				9C15D8F0287C5D3D00486F85 /* PrivateInfo.swift in Sources */,
 				BA21D3AB2887BE8A0073C422 /* GpsRequestModel.swift in Sources */,
 				BA3DBC512879B553005BA6F0 /* AddViewController.swift in Sources */,
+				BA5FC6472887C9CF00A69902 /* GpsResponseModel.swift in Sources */,
 				9CAAC4E7288080FC005B2136 /* didSaveWeatherModel.swift in Sources */,
 				BA3DBC532879B562005BA6F0 /* ListViewController.swift in Sources */,
 				BA3DBC552879BE14005BA6F0 /* CityViewController.swift in Sources */,
