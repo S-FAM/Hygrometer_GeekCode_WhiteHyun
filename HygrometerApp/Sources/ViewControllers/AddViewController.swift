@@ -11,8 +11,7 @@ import SnapKit
 
 class AddViewController: UIViewController {
     
-    var weatherModel: WeatherModel?
-    var searchGpsModel: [Item] = []
+    var weatherModel: WeatherResponse?
     var cityList: [Item] = []
     var searchCityList: [Item] = []
     var searchString = ""
@@ -145,7 +144,7 @@ class AddViewController: UIViewController {
         
         let urlStr = API.makeString(with: [ApiType.gps.host])
         
-        let parameters = GpsParamModel(
+        let parameters = GpsRequest(
           key: Private.gpsSecretKey,
           query: searchStr,
           request: "search",
@@ -158,7 +157,7 @@ class AddViewController: UIViewController {
         
         AF
           .request(urlStr, method: .get, parameters: parameters)
-          .responseDecodable(of: GpsModel.self) { response in
+          .responseDecodable(of: GpsResponse.self) { response in
             switch response.result {
             case .success(let result):
               completionHandler(result.response.result.items)
@@ -233,7 +232,7 @@ class AddViewController: UIViewController {
     func getJsonDecoder(data: Data) {
 
             do {
-                let jsonDecoder = try JSONDecoder().decode(WeatherModel.self, from: data)
+                let jsonDecoder = try JSONDecoder().decode(WeatherResponse.self, from: data)
                 self.weatherModel = jsonDecoder
                 DispatchQueue.main.async {
 //                    print("weather: ", self.weatherModel?.weather)
@@ -255,7 +254,7 @@ extension AddViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
 //        self.searchString = searchText
-        self.searchCityList = self.cityList.filter({$0.title.lowercased().contains(searchText.lowercased())})
+        self.searchCityList = self.cityList.filter({$0.city.lowercased().contains(searchText.lowercased())})
             if searchText == "" {
                 self.searchCityList = cityList
             }
@@ -282,7 +281,7 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityListTableViewCell", for: indexPath) as! CityListTableViewCell
         cell.selectionStyle = .none
 
-            cell.locationNameLabel.text = "\(self.searchCityList[indexPath.row].title)"
+        cell.locationNameLabel.text = "\(self.searchCityList[indexPath.row].city)"
             cell.NationNameLabel.text = "대한민국"
    
         cell.backgroundColor = .clear
