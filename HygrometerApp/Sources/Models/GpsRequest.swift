@@ -1,6 +1,3 @@
-import Foundation
-
-
 /// 시/군/구 및 gps를 요청하기위해 필요한 파라미터 모델입니다.
 struct GpsRequest: Codable {
     
