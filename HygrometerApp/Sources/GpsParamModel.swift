@@ -1,12 +1,4 @@
-//
-//  AfParamModel.swift
-//  HygrometerApp
-//
-//  Created by hyeonseok on 2022/07/15.
-//
-
-import Foundation
-
+@available(iOS, deprecated, renamed: "GpsRequestModel")
 struct GpsParamModel: Codable {
   let key, query, request, type, category: String
 }
