@@ -27,12 +27,7 @@ class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
         setLayout()
-        self.view.backgroundColor = .themeColor.withAlphaComponent(0.7)
-        
-
-
     }
     
     
@@ -51,7 +46,7 @@ class AddViewController: UIViewController {
     }
     
     func setLayout(){
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = .themeColor.withAlphaComponent(0.7)
         self.view.addSubview(cityListSearchBar)
         cityListSearchBar.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide).offset(self.view.frame.height * 0.01)//offset
@@ -94,7 +89,7 @@ class AddViewController: UIViewController {
                 make.centerX.equalTo(self.view)
 
             }
-            emptyResultView.backgroundColor = .themeColor
+            emptyResultView.backgroundColor = .clear
             emptyResultView.layer.cornerRadius = 20
             //그림자
             emptyResultView.layer.shadowColor = ShadowSet.shadowColor
@@ -118,9 +113,7 @@ class AddViewController: UIViewController {
             cityListTableView.snp.makeConstraints { make in
                 make.top.bottom.leading.trailing.equalTo(emptyResultView)
             }
-            cityListTableView.backgroundColor = .themeColor
-            cityListTableView.layer.cornerRadius = 20
-
+            cityListTableView.backgroundColor = .clear
             cityListTableView.dataSource = self
             cityListTableView.delegate = self
             cityListTableView.keyboardDismissMode = .onDrag
@@ -260,10 +253,10 @@ extension AddViewController: UISearchBarDelegate {
             }
             self.cityListTableView.reloadData()
             
-            // 값이 없는 경우
-            DispatchQueue.main.async {
-                self.cityListTableView.isHidden = (self.searchCityList.count == 0) ? true : false
-            }
+        // 값이 없는경우
+        emptyResultView.isHidden = searchCityList.count == 0 ? false : true
+        emptyResultLabel.isHidden = searchCityList.count == 0 ? false : true
+        cityListTableView.isHidden = searchCityList.count == 0 ? true : false
 
     }
 }
@@ -280,11 +273,10 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityListTableViewCell", for: indexPath) as! CityListTableViewCell
         cell.selectionStyle = .none
-
+        cell.backgroundColor = .clear
         cell.locationNameLabel.text = "\(self.searchCityList[indexPath.row].city)"
             cell.NationNameLabel.text = "대한민국"
    
-        cell.backgroundColor = .clear
         return cell
     }
     
