@@ -22,28 +22,38 @@ class AddViewController: UIViewController {
     
     let emptyResultLabel = UILabel() // 테이블뷰 조회결과가 없는 경우
     let emptyResultView = UIView()
-    
+    let tempView = UIView()          // 키보드 생성시 dismiss를 사용하기 위해 사용할 View
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         setLayout()
+
     }
-    
-    
+        
+    @objc func keyboardWillShow(_ notification: Notification){
+        print(#function)
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        searchString = "남원"
-        getGpsApi(searchStr: searchString) { result in
+
+    }
+    
+    func searchLocation(searchStr: String){
+        getGpsApi(searchStr: searchStr) { result in
             if let parsedArray = result as? [Item]  {
                 self.cityList = parsedArray
                 self.searchCityList = self.cityList
-                print("cityList: ",self.searchCityList)
+                self.cityListTableView.reloadData()
+
             }
             
         }
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.cityListSearchBar.resignFirstResponder()
+    }
+    
     
     func setLayout(){
         self.view.backgroundColor = .themeColor.withAlphaComponent(0.7)
@@ -122,6 +132,7 @@ class AddViewController: UIViewController {
             let sharedNib = UINib(nibName: "CityListTableViewCell", bundle: nil)
             self.cityListTableView.register(sharedNib, forCellReuseIdentifier: "CityListTableViewCell")
             
+            setTempView()
             
         }
 
@@ -162,7 +173,24 @@ class AddViewController: UIViewController {
         
     }
     
+    func setTempView(){
+        self.view.addSubview(tempView)
+        tempView.snp.makeConstraints { make in
+            make.edges.equalTo(self.view)
+        }
+        tempView.backgroundColor = .red.withAlphaComponent(0.3)
+        tempView.isHidden = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        self.tempView.addGestureRecognizer(tap)
+
+    }
     
+    
+    @objc func hideKeyboard(){
+        print("화면Tap감지")
+        self.view.endEditing(true)
+
+    }
     func getWeatherData(lat: String, long: String){
         
 //        let lat = "37"
@@ -246,19 +274,27 @@ class AddViewController: UIViewController {
 extension AddViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
+        
+        
 //        self.searchString = searchText
         self.searchCityList = self.cityList.filter({$0.city.lowercased().contains(searchText.lowercased())})
             if searchText == "" {
                 self.searchCityList = cityList
+                self.cityListTableView.reloadData()
             }
-            self.cityListTableView.reloadData()
             
-        // 값이 없는경우
-        emptyResultView.isHidden = searchCityList.count == 0 ? false : true
-        emptyResultLabel.isHidden = searchCityList.count == 0 ? false : true
-        cityListTableView.isHidden = searchCityList.count == 0 ? true : false
+ 
 
     }
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        
+        guard let inputStr = searchBar.text else {return false}
+        
+//        self.searchString = inputStr
+        self.searchLocation(searchStr: inputStr)
+        return true
+    }
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -277,12 +313,19 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
         cell.locationNameLabel.text = "\(self.searchCityList[indexPath.row].city)"
             cell.NationNameLabel.text = "대한민국"
    
+        
+        // 값이 없는경우
+        DispatchQueue.main.async {
+            self.emptyResultView.isHidden = self.searchCityList.count == 0 ? false : true
+            self.emptyResultLabel.isHidden = self.searchCityList.count == 0 ? false : true
+            self.cityListTableView.isHidden = self.searchCityList.count == 0 ? true : false
+        }
+      
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         
         let currentPoint = searchCityList[indexPath.row].point
         print("currentPoint: \(currentPoint)")
