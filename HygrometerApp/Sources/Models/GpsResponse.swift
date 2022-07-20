@@ -1,5 +1,5 @@
 /// 주소와 주소에 대한 세부정보를 가지고 있는 모델입니다.
-struct GpsResponseModel: Codable {
+struct GpsResponse: Codable {
     let response: Response
 }
 
