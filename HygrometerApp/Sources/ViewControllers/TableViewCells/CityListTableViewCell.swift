@@ -11,7 +11,7 @@ class CityListTableViewCell: UITableViewCell {
 
     let containerView = UIView()
     let locationNameLabel = UILabel()
-    let NationNameLabel = UILabel()
+    let nationNameLabel = UILabel()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -60,17 +60,17 @@ class CityListTableViewCell: UITableViewCell {
         locationNameLabel.adjustsFontSizeToFitWidth = true
 
         
-        containerView.addSubview(NationNameLabel)
-        NationNameLabel.snp.makeConstraints { make in
+        containerView.addSubview(nationNameLabel)
+        nationNameLabel.snp.makeConstraints { make in
             make.trailing.equalTo(self).inset(30)
             make.centerY.equalTo(locationNameLabel)
             make.height.equalTo(self).multipliedBy(0.25)
         }
-        NationNameLabel.text = "대한민국"
-        NationNameLabel.textColor = UIColor.black
-        NationNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        NationNameLabel.textAlignment = .left
-        NationNameLabel.adjustsFontSizeToFitWidth = true
+        nationNameLabel.text = "대한민국"
+        nationNameLabel.textColor = UIColor.black
+        nationNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        nationNameLabel.textAlignment = .left
+        nationNameLabel.adjustsFontSizeToFitWidth = true
     }
 
 }

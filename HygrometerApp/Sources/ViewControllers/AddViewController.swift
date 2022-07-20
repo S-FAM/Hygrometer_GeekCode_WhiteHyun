@@ -318,7 +318,7 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
         cell.locationNameLabel.text = "\(self.searchCityList[indexPath.row].city)"
-            cell.NationNameLabel.text = "대한민국"
+            cell.nationNameLabel.text = "대한민국"
    
         
         // 값이 없는경우
