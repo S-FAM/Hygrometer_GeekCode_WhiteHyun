@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		9C15D8F0287C5D3D00486F85 /* PrivateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15D8EF287C5D3D00486F85 /* PrivateInfo.swift */; };
 		9C15D8F3287C5D5B00486F85 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15D8F2287C5D5B00486F85 /* API.swift */; };
-		9CAAC4DF28806FAC005B2136 /* GpsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4DE28806FAC005B2136 /* GpsModel.swift */; };
-		9CAAC4E1288075D9005B2136 /* GpsParamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4E0288075D9005B2136 /* GpsParamModel.swift */; };
 		9CAAC4E328807F0C005B2136 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4E228807F0C005B2136 /* WeatherModel.swift */; };
 		9CAAC4E7288080FC005B2136 /* didSaveWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4E6288080FC005B2136 /* didSaveWeatherModel.swift */; };
 		9CD4F72B28844F4200DDC7FD /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4F72A28844F4200DDC7FD /* Extentions.swift */; };
@@ -36,8 +34,6 @@
 /* Begin PBXFileReference section */
 		9C15D8EF287C5D3D00486F85 /* PrivateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateInfo.swift; sourceTree = "<group>"; };
 		9C15D8F2287C5D5B00486F85 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		9CAAC4DE28806FAC005B2136 /* GpsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsModel.swift; sourceTree = "<group>"; };
-		9CAAC4E0288075D9005B2136 /* GpsParamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsParamModel.swift; sourceTree = "<group>"; };
 		9CAAC4E228807F0C005B2136 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		9CAAC4E6288080FC005B2136 /* didSaveWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = didSaveWeatherModel.swift; sourceTree = "<group>"; };
 		9CD4F72A28844F4200DDC7FD /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
@@ -134,9 +130,7 @@
 			children = (
 				BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */,
 				BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */,
-				9CAAC4E0288075D9005B2136 /* GpsParamModel.swift */,
 				BA21D3AE2887C8C10073C422 /* Models */,
-				9CAAC4DE28806FAC005B2136 /* GpsModel.swift */,
 				9CAAC4E228807F0C005B2136 /* WeatherModel.swift */,
 				9CAAC4E6288080FC005B2136 /* didSaveWeatherModel.swift */,
 				BA3DBC4F2879B4D5005BA6F0 /* ViewControllers */,
@@ -250,7 +244,6 @@
 			files = (
 				BA3DBC3F2879B438005BA6F0 /* MainViewController.swift in Sources */,
 				BA3DBC3B2879B438005BA6F0 /* AppDelegate.swift in Sources */,
-				9CAAC4DF28806FAC005B2136 /* GpsModel.swift in Sources */,
 				9C15D8F0287C5D3D00486F85 /* PrivateInfo.swift in Sources */,
 				BA21D3AB2887BE8A0073C422 /* GpsRequestModel.swift in Sources */,
 				BA3DBC512879B553005BA6F0 /* AddViewController.swift in Sources */,
@@ -261,7 +254,6 @@
 				9CD4F72B28844F4200DDC7FD /* Extentions.swift in Sources */,
 				9C15D8F3287C5D5B00486F85 /* API.swift in Sources */,
 				9CAAC4E328807F0C005B2136 /* WeatherModel.swift in Sources */,
-				9CAAC4E1288075D9005B2136 /* GpsParamModel.swift in Sources */,
 				9CD4F72E288458D600DDC7FD /* CityListTableViewCell.swift in Sources */,
 				BA3DBC3D2879B438005BA6F0 /* SceneDelegate.swift in Sources */,
 				9CD4F732288458EA00DDC7FD /* WeatherListTableViewCell.swift in Sources */,
