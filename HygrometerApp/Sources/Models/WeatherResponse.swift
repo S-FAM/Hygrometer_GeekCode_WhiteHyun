@@ -4,7 +4,6 @@ struct WeatherResponse: Codable {
     let weather: [WeatherElement]
 }
 
-
 struct Main: Codable {
     
     /// 온도
