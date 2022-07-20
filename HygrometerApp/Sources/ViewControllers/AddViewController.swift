@@ -39,6 +39,8 @@ class AddViewController: UIViewController {
 
     }
     
+    /// 검색어를 통해 GPS검색하는 함수
+    /// - Parameter searchStr: 서치바의 검색어
     func searchLocation(searchStr: String){
         getGpsApi(searchStr: searchStr) { result in
             if let parsedArray = result as? [Item]  {
@@ -50,6 +52,9 @@ class AddViewController: UIViewController {
             
         }
     }
+    
+    
+    /// 최초 화면 터치시 cityListSearchBar 활성화
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.cityListSearchBar.resignFirstResponder()
     }
@@ -173,6 +178,8 @@ class AddViewController: UIViewController {
         
     }
     
+    
+    /// 키보드가 올라가는 경우 dismiss를 위해 사용할 뷰
     func setTempView(){
         self.view.addSubview(tempView)
         tempView.snp.makeConstraints { make in
@@ -186,6 +193,7 @@ class AddViewController: UIViewController {
     }
     
     
+    /// setTempView를 터치할 때 실행되는 함수
     @objc func hideKeyboard(){
         print("화면Tap감지")
         self.view.endEditing(true)
@@ -275,10 +283,9 @@ extension AddViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         
-        
 //        self.searchString = searchText
         self.searchCityList = self.cityList.filter({$0.city.lowercased().contains(searchText.lowercased())})
-            if searchText == "" {
+            if searchText == "" { // 검색어가 다 지워졌을 때 전체 리스트를 보여줌
                 self.searchCityList = cityList
                 self.cityListTableView.reloadData()
             }
