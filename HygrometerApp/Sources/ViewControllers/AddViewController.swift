@@ -11,8 +11,7 @@ import SnapKit
 
 class AddViewController: UIViewController {
     
-    var weatherModel: WeatherModel?
-    var searchGpsModel: [Item] = []
+    var weatherModel: WeatherResponse?
     var cityList: [Item] = []
     var searchCityList: [Item] = []
     var searchString = ""
@@ -23,36 +22,41 @@ class AddViewController: UIViewController {
     
     let emptyResultLabel = UILabel() // 테이블뷰 조회결과가 없는 경우
     let emptyResultView = UIView()
-    
+    let tempView = UIView()          // 키보드 생성시 dismiss를 사용하기 위해 사용할 View
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
         setLayout()
-        self.view.backgroundColor = .themeColor.withAlphaComponent(0.7)
-        
 
+    }
+        
+    @objc func keyboardWillShow(_ notification: Notification){
+        print(#function)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        searchString = "남원"
-        getGpsApi(searchStr: searchString) { result in
+    func searchLocation(searchStr: String){
+        getGpsApi(searchStr: searchStr) { result in
             if let parsedArray = result as? [Item]  {
                 self.cityList = parsedArray
                 self.searchCityList = self.cityList
-                print("cityList: ",self.searchCityList)
+                self.cityListTableView.reloadData()
+
             }
             
         }
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.cityListSearchBar.resignFirstResponder()
+    }
+    
     
     func setLayout(){
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = .themeColor.withAlphaComponent(0.7)
         self.view.addSubview(cityListSearchBar)
         cityListSearchBar.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide).offset(self.view.frame.height * 0.01)//offset
@@ -90,12 +94,12 @@ class AddViewController: UIViewController {
             self.view.addSubview(emptyResultView)
             emptyResultView.snp.makeConstraints { make in
                 make.top.equalTo(cityListSearchBar.snp.bottom).offset(self.view.frame.height * 0.01)
-                make.leading.trailing.equalTo(cityListSearchBar)
+                make.leading.trailing.equalTo(cityListSearchBar.searchTextField)
                 make.bottom.equalTo(self.view.safeAreaLayoutGuide)
                 make.centerX.equalTo(self.view)
 
             }
-            emptyResultView.backgroundColor = .themeColor
+            emptyResultView.backgroundColor = .clear
             emptyResultView.layer.cornerRadius = 20
             //그림자
             emptyResultView.layer.shadowColor = ShadowSet.shadowColor
@@ -119,9 +123,7 @@ class AddViewController: UIViewController {
             cityListTableView.snp.makeConstraints { make in
                 make.top.bottom.leading.trailing.equalTo(emptyResultView)
             }
-            cityListTableView.backgroundColor = .themeColor
-            cityListTableView.layer.cornerRadius = 20
-
+            cityListTableView.backgroundColor = .clear
             cityListTableView.dataSource = self
             cityListTableView.delegate = self
             cityListTableView.keyboardDismissMode = .onDrag
@@ -130,6 +132,7 @@ class AddViewController: UIViewController {
             let sharedNib = UINib(nibName: "CityListTableViewCell", bundle: nil)
             self.cityListTableView.register(sharedNib, forCellReuseIdentifier: "CityListTableViewCell")
             
+            setTempView()
             
         }
 
@@ -145,7 +148,7 @@ class AddViewController: UIViewController {
         
         let urlStr = API.makeString(with: [ApiType.gps.host])
         
-        let parameters = GpsParamModel(
+        let parameters = GpsRequest(
           key: Private.gpsSecretKey,
           query: searchStr,
           request: "search",
@@ -158,7 +161,7 @@ class AddViewController: UIViewController {
         
         AF
           .request(urlStr, method: .get, parameters: parameters)
-          .responseDecodable(of: GpsModel.self) { response in
+          .responseDecodable(of: GpsResponse.self) { response in
             switch response.result {
             case .success(let result):
               completionHandler(result.response.result.items)
@@ -170,7 +173,24 @@ class AddViewController: UIViewController {
         
     }
     
+    func setTempView(){
+        self.view.addSubview(tempView)
+        tempView.snp.makeConstraints { make in
+            make.edges.equalTo(self.view)
+        }
+        tempView.backgroundColor = .red.withAlphaComponent(0.3)
+        tempView.isHidden = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        self.tempView.addGestureRecognizer(tap)
+
+    }
     
+    
+    @objc func hideKeyboard(){
+        print("화면Tap감지")
+        self.view.endEditing(true)
+
+    }
     func getWeatherData(lat: String, long: String){
         
 //        let lat = "37"
@@ -233,7 +253,7 @@ class AddViewController: UIViewController {
     func getJsonDecoder(data: Data) {
 
             do {
-                let jsonDecoder = try JSONDecoder().decode(WeatherModel.self, from: data)
+                let jsonDecoder = try JSONDecoder().decode(WeatherResponse.self, from: data)
                 self.weatherModel = jsonDecoder
                 DispatchQueue.main.async {
 //                    print("weather: ", self.weatherModel?.weather)
@@ -254,19 +274,27 @@ class AddViewController: UIViewController {
 extension AddViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
+        
+        
 //        self.searchString = searchText
-        self.searchCityList = self.cityList.filter({$0.title.lowercased().contains(searchText.lowercased())})
+        self.searchCityList = self.cityList.filter({$0.city.lowercased().contains(searchText.lowercased())})
             if searchText == "" {
                 self.searchCityList = cityList
+                self.cityListTableView.reloadData()
             }
-            self.cityListTableView.reloadData()
             
-            // 값이 없는 경우
-            DispatchQueue.main.async {
-                self.cityListTableView.isHidden = (self.searchCityList.count == 0) ? true : false
-            }
+ 
 
     }
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        
+        guard let inputStr = searchBar.text else {return false}
+        
+//        self.searchString = inputStr
+        self.searchLocation(searchStr: inputStr)
+        return true
+    }
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -281,17 +309,23 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityListTableViewCell", for: indexPath) as! CityListTableViewCell
         cell.selectionStyle = .none
-
-            cell.locationNameLabel.text = "\(self.searchCityList[indexPath.row].title)"
+        cell.backgroundColor = .clear
+        cell.locationNameLabel.text = "\(self.searchCityList[indexPath.row].city)"
             cell.NationNameLabel.text = "대한민국"
    
-        cell.backgroundColor = .clear
+        
+        // 값이 없는경우
+        DispatchQueue.main.async {
+            self.emptyResultView.isHidden = self.searchCityList.count == 0 ? false : true
+            self.emptyResultLabel.isHidden = self.searchCityList.count == 0 ? false : true
+            self.cityListTableView.isHidden = self.searchCityList.count == 0 ? true : false
+        }
+      
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         
         let currentPoint = searchCityList[indexPath.row].point
         print("currentPoint: \(currentPoint)")
