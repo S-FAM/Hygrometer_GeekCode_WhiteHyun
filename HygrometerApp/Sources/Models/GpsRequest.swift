@@ -10,6 +10,9 @@ struct GpsRequest: Codable {
     /// 검색 쿼리
     let query: String
     
+    /// 요청 서비스 오퍼레이션, 유효값은 search 하나밖에 없다.
+    let request: String
+    
     /// 검색 대상
     /// `place`: 장소, `address`: 주소, `district`: 행정구역, `road`: 도로명
     let type: String
