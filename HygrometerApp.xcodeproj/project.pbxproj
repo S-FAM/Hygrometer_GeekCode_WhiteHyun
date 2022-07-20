@@ -98,6 +98,7 @@
 				BA5FC6462887C9CF00A69902 /* GpsResponse.swift */,
 				BA0DCBBE2887E237003C059A /* WeatherRequest.swift */,
 				BA0DCBC02887E385003C059A /* WeatherResponse.swift */,
+				9CAAC4E6288080FC005B2136 /* didSaveWeatherModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,7 +136,6 @@
 				BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */,
 				BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */,
 				BA21D3AE2887C8C10073C422 /* Models */,
-				9CAAC4E6288080FC005B2136 /* didSaveWeatherModel.swift */,
 				BA3DBC4F2879B4D5005BA6F0 /* ViewControllers */,
 			);
 			path = Sources;
