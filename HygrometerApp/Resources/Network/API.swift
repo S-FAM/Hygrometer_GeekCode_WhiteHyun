@@ -8,8 +8,8 @@
 import Foundation
 
 public struct API {
-    public init() {}
     
+    private init() {}
     
     /// Add String
     /// - Parameter stringArray: 여러개의 string 붙이기
