@@ -60,6 +60,19 @@ public struct API {
             }
             .resume()
     }
+    
+    /// 날씨에 대한 정보를 가져올 때 사용합니다.
+    /// - Parameters:
+    ///   - model: URL 요청에 사용할 URL 변환 가능 값
+    ///   - completion: 요청이 완료되면 실행되는 클로저
+    static func weatherInformation(with model: WeatherRequest, completion: @escaping (Result<WeatherResponse, AFError>) -> Void) {
+        AF
+            .request(ApiType.weather.host, method: .get, parameters: model)
+            .responseDecodable(of: WeatherResponse.self) {
+                completion($0.result)
+            }
+            .resume()
+    }
 }
 
 enum ApiType {
