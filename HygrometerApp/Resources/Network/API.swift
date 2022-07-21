@@ -20,10 +20,8 @@ public struct API {
         for str in stringArray {
             fullStr += str
         }
-//        print("\(fullStr)")
         return fullStr
     }
-    
     
     /// API로 부터 Data를 디코딩하는 함수
     /// - Parameters:
@@ -60,18 +58,6 @@ enum ApiType {
         switch self {
         case .gps: return "https://api.vworld.kr/req/search?"
         case .weather: return "https://api.openweathermap.org/data/2.5/weather?"
-            
-//"https://api.vworld.kr/req/search?key=1DAD8342-3C3A-3763-AEC5-8D0EED23FB5A&query=수원&request=search&type=district&category=L4"
-
-//https://api.vworld.kr/req/search??key=1DAD8342-3C3A-3763-AEC5-8D0EED23FB5A&query=수원&request=search&type=district&category=L4
-
-            
-//https://api.openweathermap.org/data/2.5/weather??key=1DAD8342-3C3A-3763-AEC5-8D0EED23FB5A&query=수원&request=search&type=district&category=L4
-
-            
-//            "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(long)&appid=\(serviceKey)"
         }
     }
 }
-
-
