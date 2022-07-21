@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Alamofire
+
 public struct API {
     
     private init() {}
@@ -44,6 +46,19 @@ public struct API {
             successHandler(rstData)
         }
         .resume()
+    }
+    
+    /// 도시 정보를 가져올 때 사용합니다.
+    /// - Parameters:
+    ///   - model: URL 요청에 사용할 URL 변환 가능 값
+    ///   - completion: 요청이 완료되면 실행되는 클로저
+    static func cityInformation(with model: GpsRequest, completion: @escaping (Result<GpsResponse, AFError>) -> Void) {
+        AF
+            .request(ApiType.gps.host, method: .get, parameters: model)
+            .responseDecodable(of: GpsResponse.self) {
+                completion($0.result)
+            }
+            .resume()
     }
 }
 
