@@ -26,11 +26,13 @@ final class MainViewController: UIViewController {
     private lazy var listButton = UIButton().then {
         $0.setImage(UIImage(systemName: "list.star"), for: .normal)
         $0.tintColor = .label
+        $0.addTarget(self, action: #selector(listButtonDidTap), for: .touchUpInside)
     }
     
     private lazy var plusButton = UIButton().then {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
         $0.tintColor = .label
+        $0.addTarget(self, action: #selector(plusButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Life cycle
@@ -77,5 +79,17 @@ final class MainViewController: UIViewController {
     private func setupStyles() {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    // MARK: - objc Function
+    
+    @objc func listButtonDidTap() {
+        let vc = ListViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func plusButtonDidTap() {
+        let vc = AddViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
