@@ -30,36 +30,22 @@ public struct API {
     ///   - url: 연결하려는 URL
     ///   - successHandler: 성공시 사용하는 Completion, Data를 가지고 있음
     ///   - errorHandler: 실패시 사용하는 Completion , Error 메세지를 가지고 있음
-    static public func getDataReturnData(url: String, successHandler: @escaping (_ resultData: Data?)-> Void, errorHandler: @escaping (_ error: Error)-> Void) {
+    static public func getDataReturnData(url: String, successHandler: @escaping (_ resultData: Data?) -> Void, errorHandler: @escaping (_ error: Error) -> Void) {
         
-        let session = URLSession.shared
-        if let reqUrl = URL(string: url) {
-            session.dataTask(with: reqUrl) { data, response, error in
-                
-                if error != nil {
-                    print("error\(String(describing: error))")
-                    errorHandler(error!)
-                }else {
-                    
-                    print("response\(String(describing: response))  data\(String(describing: data))")
-                    
-                    guard let rstData = data else {
-                        print("data is nil")
-                        //nil에 대한 대비를 해야하는가?!!??
-                        successHandler(nil)
-                        return
-                    }
-                   
-                    successHandler(rstData)
-                    
-                }
-            }.resume()
-        }else {
-            print("url is nil or empty")
+        guard let reqUrl = URL(string: url) else {
+            // TODO: URL 등록 오류를 처리하거나 무시해야함
+            return
         }
+        
+        URLSession.shared.dataTask(with: reqUrl) { data, response, error in
+            guard let rstData = data else {
+                errorHandler(error!)
+                return
+            }
+            successHandler(rstData)
+        }
+        .resume()
     }
-
-
 }
 
 enum ApiType {
