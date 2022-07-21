@@ -20,8 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let vc = UINavigationController()
         window?.rootViewController = vc
-        vc.pushViewController(AddViewController(), animated: false)
-//        vc.pushViewController(MainViewController(), animated: false)
+        vc.pushViewController(MainViewController(), animated: false)
         window?.makeKeyAndVisible()
     }
 }
