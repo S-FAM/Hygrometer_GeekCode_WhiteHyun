@@ -73,13 +73,27 @@ class AddViewController: UIViewController {
     
     /// 검색어를 통해 GPS검색하는 함수
     /// - Parameter searchStr: 서치바의 검색어
-    func searchLocation(searchStr: String){
-        getGpsApi(searchStr: searchStr) { result in
-            if let parsedArray = result as? [Item]  {
-                self.cityList = parsedArray
-                self.searchCityList = self.cityList
-                self.cityListTableView.reloadData()
-
+    func searchLocation(searchStr: String) {
+        
+        let model = GpsRequest(
+            key: Private.gpsSecretKey,
+            query: searchStr,
+            request: "search",
+            type: "district",
+            category: "L4"
+        )
+        
+        API.cityInformation(with: model) { response in
+            switch response {
+            case .success(let data):
+                let parsedArray = data.response.result.items
+                self.searchCityList = parsedArray
+                DispatchQueue.main.async { [weak self] in
+                    self?.cityListTableView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
@@ -87,10 +101,39 @@ class AddViewController: UIViewController {
     /// 최초 화면 터치시 cityListSearchBar 활성화
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.cityListSearchBar.resignFirstResponder()
-    }
+    }
     
+    /// setTempView를 터치할 때 실행되는 함수
+    @objc func hideKeyboard() {
+        print("화면Tap감지")
+        self.view.endEditing(true)
+    }
     
-    func setLayout(){
+    /// openWeather Main 값에 따라 String 반환
+    /// - Returns: Lottie Weater
+    func getWeatherIconName(_ data: WeatherResponse) -> String {
+        guard let data = weatherModel else { return "" }
+        
+        switch data.weather[0].main {
+        case "Clouds":
+            return "weatherWindy"
+        case "Clear":
+            return "weatherSunny"
+        case "Rain":
+            return "weatherPartlyShower"
+        case "Atmospher":
+            return "weatherFoggy"
+        default:
+            return "weatherSnow"
+        }
+    }
+}
+
+// MARK: - Layouts
+
+extension AddViewController {
+    
+    func setLayout() {
         self.view.backgroundColor = .themeColor.withAlphaComponent(0.7)
         self.view.addSubview(cityListSearchBar)
         self.view.addSubview(emptyResultView)
