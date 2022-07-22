@@ -64,12 +64,9 @@ class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
-
+        setStyles()
     }
-        
-    @objc func keyboardWillShow(_ notification: Notification){
-        print(#function)
-    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
