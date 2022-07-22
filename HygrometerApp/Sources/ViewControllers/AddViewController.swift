@@ -150,47 +150,50 @@ class AddViewController: UIViewController {
 }
 
 
-extension AddViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+extension AddViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        guard let inputStr = textField.text else { return false }
         
-//        self.searchString = searchText
-        self.searchCityList = self.cityList.filter({$0.city.lowercased().contains(searchText.lowercased())})
-            if searchText == "" { // 검색어가 다 지워졌을 때 전체 리스트를 보여줌
-                self.searchCityList = cityList
-                self.cityListTableView.reloadData()
-            }
-            
- 
-
-    }
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        cityListSearchBar.resignFirstResponder()
+        searchLocation(searchStr: inputStr)
         
-        guard let inputStr = searchBar.text else {return false}
-        
-//        self.searchString = inputStr
-        self.searchLocation(searchStr: inputStr)
         return true
     }
-    
 }
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
-extension AddViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+// MARK: - UITableViewDelegate
+extension AddViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-            return self.searchCityList.count
+        let point = searchCityList[indexPath.row].point
+        let city = searchCityList[indexPath.row].city
+        let id = searchCityList[indexPath.row].id
+        
+        let model = UserDataModel(id: id, city: city, point: point)
+        UserData.shared.items.append(model)
+        
+        navigationController?.popViewController(animated: true)
+    }
+}
 
+// MARK: - UITableViewDataSource
+
+extension AddViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchCityList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityListTableViewCell", for: indexPath) as! CityListTableViewCell
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
-        cell.locationNameLabel.text = "\(self.searchCityList[indexPath.row].city)"
-            cell.nationNameLabel.text = "대한민국"
-   
+        cell.locationNameLabel.text = "\(searchCityList[indexPath.row].city)"
+        cell.nationNameLabel.text = "대한민국"
         
         // 값이 없는경우
         DispatchQueue.main.async {
@@ -198,15 +201,6 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
             self.emptyResultLabel.isHidden = self.searchCityList.count == 0 ? false : true
             self.cityListTableView.isHidden = self.searchCityList.count == 0 ? true : false
         }
-      
         return cell
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let currentPoint = searchCityList[indexPath.row].point
-        print("currentPoint: \(currentPoint)")
-
     }
 }
