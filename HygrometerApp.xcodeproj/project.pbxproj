@@ -133,6 +133,7 @@
 			children = (
 				BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */,
 				BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */,
+				BA666EF3288B0FD500A779BA /* Extensions */,
 				BA21D3AE2887C8C10073C422 /* Models */,
 				BA3DBC4F2879B4D5005BA6F0 /* ViewControllers */,
 			);
@@ -154,13 +155,20 @@
 		BA3DBC5F2879C392005BA6F0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9CD4F72A28844F4200DDC7FD /* ShadowSet.swift */,
-				BA04205F2889331F004D8834 /* UIView.swift */,
-				BA04205D288932F7004D8834 /* UIColor.swift */,
 				BA3DBC432879B439005BA6F0 /* Assets.xcassets */,
 				9C15D8F1287C5D4800486F85 /* Network */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		BA666EF3288B0FD500A779BA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9CD4F72A28844F4200DDC7FD /* ShadowSet.swift */,
+				BA04205F2889331F004D8834 /* UIView.swift */,
+				BA04205D288932F7004D8834 /* UIColor.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
