@@ -13,9 +13,6 @@ public struct API {
     
     private init() {}
     
-    /// Add String
-    /// - Parameter stringArray: 여러개의 string 붙이기
-    /// - Returns: 배열로 들어온 string 붙여서 하나로 리턴
     static public func makeString(with stringArray: [String]) -> String {
         var fullStr: String = ""
         for str in stringArray {
