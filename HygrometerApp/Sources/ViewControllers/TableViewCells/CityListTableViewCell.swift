@@ -13,19 +13,15 @@ class CityListTableViewCell: UITableViewCell {
     let locationNameLabel = UILabel()
     let nationNameLabel = UILabel()
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setCityListTabeViewCellLayout()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        
-        // Configure the view for the selected state
-    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     func setCityListTabeViewCellLayout(){
