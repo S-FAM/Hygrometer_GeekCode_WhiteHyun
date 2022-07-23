@@ -22,6 +22,7 @@ final class MainViewController: UIViewController {
     ).then {
         $0.setViewControllers([dataViewControllers[0]], direction: .forward, animated: true)
         $0.dataSource = self
+        $0.delegate = self
     }
     
     private lazy var listButton = UIButton().then {
@@ -43,7 +44,7 @@ final class MainViewController: UIViewController {
         $0.numberOfPages = dataViewControllers.count
         $0.currentPage = 0
     }
-        
+    
     private let dataViewControllers = [UIViewController]().with {
         for _ in 0..<2 {
             let vc = CityViewController()
@@ -139,5 +140,17 @@ extension MainViewController: UIPageViewControllerDataSource {
         }
         return dataViewControllers[index + 1]
         
+    }
+}
+
+extension MainViewController: UIPageViewControllerDelegate {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
+        guard let vc = pageViewController.viewControllers?.first,
+              let index = dataViewControllers.firstIndex(of: vc) else {
+            return
+        }
+        control.currentPage = index
     }
 }
