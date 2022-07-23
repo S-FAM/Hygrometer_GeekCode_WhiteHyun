@@ -20,8 +20,15 @@ final class MainViewController: UIViewController {
         transitionStyle: .scroll,
         navigationOrientation: .horizontal
     ).then {
-        $0.setViewControllers([CityViewController()], direction: .forward, animated: true)
+        $0.setViewControllers([dataViewControllers[0]], direction: .forward, animated: true)
         $0.dataSource = self
+    }
+    
+    private let dataViewControllers = [UIViewController]().with {
+        for _ in 0..<2 {
+            let vc = CityViewController()
+            $0.append(vc)
+        }
     }
     
     private lazy var listButton = UIButton().then {
@@ -103,13 +110,24 @@ extension MainViewController: UIPageViewControllerDataSource {
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
     ) -> UIViewController? {
-        return viewController
+        guard let index = dataViewControllers.firstIndex(of: viewController),
+              index > 0
+        else {
+            return nil
+        }
+        return dataViewControllers[index - 1]
     }
     
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerAfter viewController: UIViewController
     ) -> UIViewController? {
-        return viewController
+        guard let index = dataViewControllers.firstIndex(of: viewController),
+              index + 1 < dataViewControllers.count
+        else {
+            return nil
+        }
+        return dataViewControllers[index + 1]
+        
     }
 }
