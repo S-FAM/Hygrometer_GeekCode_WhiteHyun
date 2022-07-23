@@ -21,6 +21,7 @@ final class MainViewController: UIViewController {
         navigationOrientation: .horizontal
     ).then {
         $0.setViewControllers([CityViewController()], direction: .forward, animated: true)
+        $0.dataSource = self
     }
     
     private lazy var listButton = UIButton().then {
@@ -91,5 +92,24 @@ final class MainViewController: UIViewController {
     @objc func plusButtonDidTap() {
         let vc = AddViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: - UIPageViewControllerDataSource
+
+extension MainViewController: UIPageViewControllerDataSource {
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerBefore viewController: UIViewController
+    ) -> UIViewController? {
+        return viewController
+    }
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerAfter viewController: UIViewController
+    ) -> UIViewController? {
+        return viewController
     }
 }
