@@ -24,13 +24,6 @@ final class MainViewController: UIViewController {
         $0.dataSource = self
     }
     
-    private let dataViewControllers = [UIViewController]().with {
-        for _ in 0..<2 {
-            let vc = CityViewController()
-            $0.append(vc)
-        }
-    }
-    
     private lazy var listButton = UIButton().then {
         $0.setImage(UIImage(systemName: "list.star"), for: .normal)
         $0.tintColor = .label
@@ -41,6 +34,13 @@ final class MainViewController: UIViewController {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
         $0.tintColor = .label
         $0.addTarget(self, action: #selector(plusButtonDidTap), for: .touchUpInside)
+    }
+        
+    private let dataViewControllers = [UIViewController]().with {
+        for _ in 0..<2 {
+            let vc = CityViewController()
+            $0.append(vc)
+        }
     }
     
     // MARK: - Life cycle
@@ -60,7 +60,6 @@ final class MainViewController: UIViewController {
         view.addSubview(listButton)
         view.addSubview(plusButton)
     }
-    
     
     /// 프로퍼티의 제약조건을 설정합니다.
     private func setupConstraints() {
