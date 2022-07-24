@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 import Alamofire
 import SnapKit
 
@@ -16,6 +17,8 @@ class AddViewController: UIViewController {
     var weatherModel: WeatherResponse?
     var searchCityList: [Item] = []
     var searchString = ""
+    var keyboardMonitor : KeyboardMonitor?
+    var subscriptions = Set<AnyCancellable>()
     
     lazy var cityListSearchBar = UISearchBar().then {
         $0.searchTextField.delegate = self
@@ -65,6 +68,9 @@ class AddViewController: UIViewController {
         super.viewDidLoad()
         setLayout()
         setStyles()
+        keyboardMonitor = KeyboardMonitor()
+        observingKeyboardEvent()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +112,11 @@ class AddViewController: UIViewController {
     /// setTempView를 터치할 때 실행되는 함수
     @objc func hideKeyboard() {
         print("화면Tap감지")
-        self.view.endEditing(true)
+        
+        guard let inputStr = cityListSearchBar.searchTextField.text else { return }
+        print("inputStr: ",inputStr)
+        cityListSearchBar.resignFirstResponder()
+        searchLocation(searchStr: inputStr)
     }
     
     /// openWeather Main 값에 따라 String 반환
@@ -246,4 +256,19 @@ extension AddViewController: UITableViewDataSource {
         }
         return cell
     }
+}
+
+//MARK: - KeyboardMonitor
+extension AddViewController {
+    /// 키보드 이벤트처리
+    fileprivate func observingKeyboardEvent() { //키보드 height를 받아서 처리
+        keyboardMonitor?.$keyboardHeight.sink{ height in
+            
+            //키보드의 높이가 변할때 tempView를 띄워서 상단 터치시 dismiss처리
+            self.tempView.isHidden = height > 0 ? false : true
+ 
+        }.store(in: &subscriptions)
+    }
+    
+
 }
