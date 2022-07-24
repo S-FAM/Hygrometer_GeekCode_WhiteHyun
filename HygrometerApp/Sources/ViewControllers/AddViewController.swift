@@ -17,7 +17,7 @@ class AddViewController: UIViewController {
     var weatherModel: WeatherResponse?
     var searchCityList: [Item] = []
     var searchString = ""
-    var keyboardMonitor : KeyboardMonitor?
+    var keyboardMonitor: KeyboardMonitor?
     var subscriptions = Set<AnyCancellable>()
     
     lazy var cityListSearchBar = UISearchBar().then {
@@ -262,7 +262,7 @@ extension AddViewController: UITableViewDataSource {
 extension AddViewController {
     /// 키보드 이벤트처리
     fileprivate func observingKeyboardEvent() { //키보드 height를 받아서 처리
-        keyboardMonitor?.$keyboardHeight.sink{ height in
+        keyboardMonitor?.$keyboardHeight.sink { height in
             
             //키보드의 높이가 변할때 tempView를 띄워서 상단 터치시 dismiss처리
             self.tempView.isHidden = height > 0 ? false : true
