@@ -58,7 +58,7 @@ class AddViewController: UIViewController {
     lazy var tempView = UIView().then {
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         $0.addGestureRecognizer(tap)
-        $0.backgroundColor = .red.withAlphaComponent(0.3)
+        $0.backgroundColor = .clear
         $0.isHidden = true
     }
     
