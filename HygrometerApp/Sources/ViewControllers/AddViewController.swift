@@ -11,315 +11,232 @@ import SnapKit
 
 class AddViewController: UIViewController {
     
+    // MARK: - Properties
+    
     var weatherModel: WeatherResponse?
-    var cityList: [Item] = []
     var searchCityList: [Item] = []
     var searchString = ""
     
+    lazy var cityListSearchBar = UISearchBar().then {
+        $0.searchTextField.delegate = self
+        $0.placeholder = "Search for city"
+        $0.searchBarStyle = .minimal
+        $0.tintColor = .systemYellow
+        $0.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
+        $0.setImage(UIImage(named: "icSearchNonW"), for: .search, state: .normal)
+    }
     
-    let cityListSearchBar = UISearchBar()
-    let cityListTableView = UITableView()
+    lazy var cityListTableView = UITableView().then {
+        $0.backgroundColor = .clear
+        $0.keyboardDismissMode = .onDrag
+        $0.dataSource = self
+        $0.delegate = self
+        $0.register(CityListTableViewCell.self, forCellReuseIdentifier: "CityListTableViewCell")
+    }
     
-    let emptyResultLabel = UILabel() // 테이블뷰 조회결과가 없는 경우
-    let emptyResultView = UIView()
-    let tempView = UIView()          // 키보드 생성시 dismiss를 사용하기 위해 사용할 View
+    // 테이블뷰 조회결과가 없는 경우 보여짐
+    let emptyResultLabel = UILabel().then {
+        $0.text = "검색 결과가 없습니다"
+        $0.textColor = .lightGray
+        $0.textAlignment = .center
+    }
+    
+    let emptyResultView = UIView().then {
+        $0.backgroundColor = .clear
+        $0.layer.cornerRadius = 20
+        $0.layer.shadowColor = ShadowSet.shadowColor
+        $0.layer.shadowOffset = ShadowSet.shadowOffsetWeak
+        $0.layer.shadowRadius = ShadowSet.shadowRadius
+        $0.layer.shadowOpacity = ShadowSet.shadowOpacityWeak
+        $0.layer.masksToBounds = false
+    }
+    
+    /// 키보드 생성시 dismiss를 사용하기 위해 사용할 View
+    lazy var tempView = UIView().then {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        $0.addGestureRecognizer(tap)
+        $0.backgroundColor = .red.withAlphaComponent(0.3)
+        $0.isHidden = true
+    }
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         setLayout()
-
+        setStyles()
     }
-        
-    @objc func keyboardWillShow(_ notification: Notification){
-        print(#function)
-    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
     }
     
     /// 검색어를 통해 GPS검색하는 함수
     /// - Parameter searchStr: 서치바의 검색어
-    func searchLocation(searchStr: String){
-        getGpsApi(searchStr: searchStr) { result in
-            if let parsedArray = result as? [Item]  {
-                self.cityList = parsedArray
-                self.searchCityList = self.cityList
-                self.cityListTableView.reloadData()
-
+    func searchLocation(searchStr: String) {
+        
+        let model = GpsRequest(
+            key: Private.gpsSecretKey,
+            query: searchStr,
+            request: "search",
+            type: "district",
+            category: "L4"
+        )
+        
+        API.cityInformation(with: model) { response in
+            switch response {
+            case .success(let data):
+                let parsedArray = data.response.result.items
+                self.searchCityList = parsedArray
+                DispatchQueue.main.async { [weak self] in
+                    self?.cityListTableView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
             }
-            
         }
     }
-    
     
     /// 최초 화면 터치시 cityListSearchBar 활성화
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.cityListSearchBar.resignFirstResponder()
-    }
+    }
     
+    /// setTempView를 터치할 때 실행되는 함수
+    @objc func hideKeyboard() {
+        print("화면Tap감지")
+        self.view.endEditing(true)
+    }
     
-    func setLayout(){
+    /// openWeather Main 값에 따라 String 반환
+    /// - Returns: Lottie Weater
+    func getWeatherIconName(_ data: WeatherResponse) -> String {
+        guard let data = weatherModel else { return "" }
+        
+        switch data.weather[0].main {
+        case "Clouds":
+            return "weatherWindy"
+        case "Clear":
+            return "weatherSunny"
+        case "Rain":
+            return "weatherPartlyShower"
+        case "Atmospher":
+            return "weatherFoggy"
+        default:
+            return "weatherSnow"
+        }
+    }
+}
+
+// MARK: - Layouts
+
+extension AddViewController {
+    
+    func setLayout() {
         self.view.backgroundColor = .themeColor.withAlphaComponent(0.7)
         self.view.addSubview(cityListSearchBar)
+        self.view.addSubview(emptyResultView)
+        self.view.addSubview(cityListTableView)
+        self.view.addSubview(tempView)
+        emptyResultView.addSubview(emptyResultLabel)
+        
+        
         cityListSearchBar.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide).offset(self.view.frame.height * 0.01)//offset
+            make.top.equalTo(self.view.safeAreaLayoutGuide)
             make.width.equalTo(self.view).multipliedBy(0.95)
             make.height.equalTo(self.view).multipliedBy(0.05)
             make.centerX.equalTo(self.view)
         }
-        //TODO: - 서치바 dÔelegate
-        cityListSearchBar.delegate = self
-        cityListSearchBar.placeholder = "Search for city"
-        cityListSearchBar.searchBarStyle = .minimal
-        cityListSearchBar.tintColor = .systemYellow
-        cityListSearchBar.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
-        cityListSearchBar.setImage(UIImage(named: "icSearchNonW"), for: UISearchBar.Icon.search, state: .normal)
-        if let textfield = cityListSearchBar.value(forKey: "searchField") as? UITextField {
-            //서치바 백그라운드 컬러
-            textfield.backgroundColor = .themeColor
-            //플레이스홀더 글씨 색 정하기
-            textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-            //서치바 텍스트입력시 색 정하기
-            textfield.textColor = .white
-            //왼쪽 아이콘 이미지넣기
-            if let leftView = textfield.leftView as? UIImageView {
-                leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
-                //이미지 틴트컬러 정하기
-                leftView.tintColor = .lightGray
-            }
-            //오른쪽 x버튼 이미지넣기
-            if let rightView = textfield.rightView as? UIImageView {
-                rightView.image = rightView.image?.withRenderingMode(.alwaysTemplate)
-                //이미지 틴트 정하기
-                rightView.tintColor = .lightGray
-            }
-            
-            self.view.addSubview(emptyResultView)
-            emptyResultView.snp.makeConstraints { make in
-                make.top.equalTo(cityListSearchBar.snp.bottom).offset(self.view.frame.height * 0.01)
-                make.leading.trailing.equalTo(cityListSearchBar.searchTextField)
-                make.bottom.equalTo(self.view.safeAreaLayoutGuide)
-                make.centerX.equalTo(self.view)
-
-            }
-            emptyResultView.backgroundColor = .clear
-            emptyResultView.layer.cornerRadius = 20
-            //그림자
-            emptyResultView.layer.shadowColor = ShadowSet.shadowColor
-            emptyResultView.layer.shadowOffset = ShadowSet.shadowOffsetWeak
-            emptyResultView.layer.shadowRadius = ShadowSet.shadowRadius
-            emptyResultView.layer.shadowOpacity = ShadowSet.shadowOpacityWeak
-            emptyResultView.layer.masksToBounds = false
-
-            self.emptyResultView.addSubview(emptyResultLabel)
-            emptyResultLabel.snp.makeConstraints { make in
-                make.top.equalTo(emptyResultView).offset(20)
-                make.centerX.equalTo(emptyResultView)
-                make.width.height.equalTo(emptyResultView).multipliedBy(0.5)
-
-            }
-            emptyResultLabel.text = "검색 결과가 없습니다"
-            emptyResultLabel.textColor = .lightGray
-            emptyResultLabel.textAlignment = .center
-            
-            self.view.addSubview(cityListTableView)
-            cityListTableView.snp.makeConstraints { make in
-                make.top.bottom.leading.trailing.equalTo(emptyResultView)
-            }
-            cityListTableView.backgroundColor = .clear
-            cityListTableView.dataSource = self
-            cityListTableView.delegate = self
-            cityListTableView.keyboardDismissMode = .onDrag
-
-
-            let sharedNib = UINib(nibName: "CityListTableViewCell", bundle: nil)
-            self.cityListTableView.register(sharedNib, forCellReuseIdentifier: "CityListTableViewCell")
-            
-            setTempView()
+        
+        emptyResultView.snp.makeConstraints { make in
+            make.top.equalTo(cityListSearchBar.snp.bottom).offset(self.view.frame.height * 0.01)
+            make.leading.trailing.equalTo(cityListSearchBar)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            make.centerX.equalTo(self.view)
             
         }
-
         
-
-    }
-    /// GPS API를 조회하는 함수
-    /// - Parameters:
-    ///   - searchStr: 검색값
-    ///   - completionHandler: 모델에 결과값 저장
-    func getGpsApi( searchStr: String, completionHandler: @escaping ([Item]) -> Void ) {
-//        let urlString = API.makeString(With: [ApiType.gps.host,"key=\(Private.gpsSecretKey)&query=\(searchStr)&request=search&type=district&category=L4"])
+        emptyResultLabel.snp.makeConstraints { make in
+            make.top.equalTo(emptyResultView).offset(20)
+            make.centerX.equalTo(emptyResultView)
+            make.width.height.equalTo(emptyResultView).multipliedBy(0.5)
+        }
         
-        let urlStr = API.makeString(with: [ApiType.gps.host])
+        cityListTableView.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.equalTo(emptyResultView)
+        }
         
-        let parameters = GpsRequest(
-          key: Private.gpsSecretKey,
-          query: searchStr,
-          request: "search",
-          type: "district",
-          category: "L4"
-        )
-        
-//        print(urlStr)
-//        getWeatherData(lat: "126.991288889", long: "37.3022000002")
-        
-        AF
-          .request(urlStr, method: .get, parameters: parameters)
-          .responseDecodable(of: GpsResponse.self) { response in
-            switch response.result {
-            case .success(let result):
-              completionHandler(result.response.result.items)
-            case .failure(let error):
-              print(error)
-            }
-          }
-          .resume()
-        
-    }
-    
-    
-    /// 키보드가 올라가는 경우 dismiss를 위해 사용할 뷰
-    func setTempView(){
-        self.view.addSubview(tempView)
         tempView.snp.makeConstraints { make in
             make.edges.equalTo(self.view)
         }
-        tempView.backgroundColor = .red.withAlphaComponent(0.3)
-        tempView.isHidden = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        self.tempView.addGestureRecognizer(tap)
-
     }
     
-    
-    /// setTempView를 터치할 때 실행되는 함수
-    @objc func hideKeyboard(){
-        print("화면Tap감지")
-        self.view.endEditing(true)
-
-    }
-    func getWeatherData(lat: String, long: String){
+    func setStyles() {
         
-//        let lat = "37"
-//        let long = "-122.40"
-//        let address = "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(long)&appid=\(serviceKey)"
-        let address = "https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=93d5e000c78231dfa9d072fe49692c9d&lang=kr"
-        let urlStr = API.makeString(with: [ApiType.weather.host])
+        guard let textfield = cityListSearchBar.value(forKey: "searchField") as? UITextField else { return }
         
-        print("urlStr : \(urlStr)")
+        textfield.backgroundColor = .themeColor
+        textfield.textColor = .white
         
-//        let parameters = WeatherParamModel(
-//          lat: lat,
-//          long: long,
-//          appid: Private.weatherSecretKey,
-//          lang: "kr"
-//        )
-        
-        API.getDataReturnData(url: address) { resultData in
-            
-            guard let data = resultData else { return }
-            
-            self.getJsonDecoder(data: data)
-            
-            getWeatherIconName() // 수정필요
-            
-        } errorHandler: { error in
-            print("WeatherList return data error ::: \(error.localizedDescription)")
-
-        }
-
-        
-        
-        /// openWeather Main 값에 따라 String 반환
-        /// - Returns: Lottie Weater
-        func getWeatherIconName() -> String{
-            guard let data = self.weatherModel else { return ""}
-            
-            print("data: \(data.weather[0].main)")
-    //        let main = self.weatherModel.main
-    //        print("main: \(main)")
-            switch data.weather[0].main {
-            case "Clouds":
-                return "weatherWindy"
-            case "Clear":
-                return "weatherSunny"
-            case "Rain":
-                return "weatherPartlyShower"
-            case "Atmospher":
-                return "weatherFoggy"
-
-            default:
-                return "weatherSnow"
-            }
+        //왼쪽 아이콘 이미지넣기
+        if let leftView = textfield.leftView as? UIImageView {
+            leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
+            leftView.tintColor = .lightGray
         }
         
-
+        //오른쪽 x버튼 이미지넣기
+        if let rightView = textfield.rightView as? UIImageView {
+            rightView.image = rightView.image?.withRenderingMode(.alwaysTemplate)
+        }
     }
-
-    
-    func getJsonDecoder(data: Data) {
-
-            do {
-                let jsonDecoder = try JSONDecoder().decode(WeatherResponse.self, from: data)
-                self.weatherModel = jsonDecoder
-                DispatchQueue.main.async {
-//                    print("weather: ", self.weatherModel?.weather)
-                    print("weather: ", self.weatherModel)
-
-//                    self.setWeatherAnimation()
-                    
-                }
-            } catch {
-                print("EquipmentList jsonDecoder fail error ::: \(error)")
-            }
-        
-    }
-    
 }
 
 
-extension AddViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+extension AddViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        guard let inputStr = textField.text else { return false }
         
-//        self.searchString = searchText
-        self.searchCityList = self.cityList.filter({$0.city.lowercased().contains(searchText.lowercased())})
-            if searchText == "" { // 검색어가 다 지워졌을 때 전체 리스트를 보여줌
-                self.searchCityList = cityList
-                self.cityListTableView.reloadData()
-            }
-            
- 
-
-    }
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        cityListSearchBar.resignFirstResponder()
+        searchLocation(searchStr: inputStr)
         
-        guard let inputStr = searchBar.text else {return false}
-        
-//        self.searchString = inputStr
-        self.searchLocation(searchStr: inputStr)
         return true
     }
-    
 }
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
-extension AddViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+// MARK: - UITableViewDelegate
+extension AddViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-            return self.searchCityList.count
+        let point = searchCityList[indexPath.row].point
+        let city = searchCityList[indexPath.row].city
+        let id = searchCityList[indexPath.row].id
+        
+        let model = UserDataModel(id: id, city: city, point: point)
+        UserData.shared.items.append(model)
+        
+        navigationController?.popViewController(animated: true)
+    }
+}
 
+// MARK: - UITableViewDataSource
+
+extension AddViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchCityList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityListTableViewCell", for: indexPath) as! CityListTableViewCell
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
-        cell.locationNameLabel.text = "\(self.searchCityList[indexPath.row].city)"
-            cell.nationNameLabel.text = "대한민국"
-   
+        cell.locationNameLabel.text = "\(searchCityList[indexPath.row].city)"
+        cell.nationNameLabel.text = "대한민국"
         
         // 값이 없는경우
         DispatchQueue.main.async {
@@ -327,15 +244,6 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
             self.emptyResultLabel.isHidden = self.searchCityList.count == 0 ? false : true
             self.cityListTableView.isHidden = self.searchCityList.count == 0 ? true : false
         }
-      
         return cell
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let currentPoint = searchCityList[indexPath.row].point
-        print("currentPoint: \(currentPoint)")
-
     }
 }
