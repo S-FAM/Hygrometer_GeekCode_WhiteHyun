@@ -48,6 +48,7 @@ final class MainViewController: UIViewController {
     private var dataViewControllers = [UIViewController]().with { array in
         UserData.shared.items.forEach { model in
             let vc = CityViewController()
+            vc.configure(with: model)
             array.append(vc)
         }
     }

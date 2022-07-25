@@ -71,4 +71,8 @@ class CityViewController: UIViewController {
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
     }
+    
+    func configure(with model: UserDataModel) {
+        
+    }
 }
