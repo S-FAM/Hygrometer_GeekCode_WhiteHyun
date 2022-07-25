@@ -110,7 +110,7 @@ class AddViewController: UIViewController {
     }
     
     /// setTempView를 터치할 때 실행되는 함수
-    @objc func hideKeyboard() {
+    @objc private func hideKeyboard() {
         print("화면Tap감지")
         
         guard let inputStr = cityListSearchBar.searchTextField.text else { return }
@@ -261,11 +261,11 @@ extension AddViewController: UITableViewDataSource {
 //MARK: - KeyboardMonitor
 extension AddViewController {
     /// 키보드 이벤트처리
-    fileprivate func observingKeyboardEvent() { //키보드 height를 받아서 처리
-        keyboardMonitor?.$keyboardHeight.sink { height in
+    private func observingKeyboardEvent() { //키보드 height를 받아서 처리
+        keyboardMonitor?.$keyboardHeight.sink { [weak self] height in
             
             //키보드의 높이가 변할때 tempView를 띄워서 상단 터치시 dismiss처리
-            self.tempView.isHidden = height > 0 ? false : true
+            self?.tempView.isHidden = height > 0 ? false : true
  
         }.store(in: &subscriptions)
     }
