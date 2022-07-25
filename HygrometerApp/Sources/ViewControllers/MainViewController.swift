@@ -45,10 +45,10 @@ final class MainViewController: UIViewController {
         $0.currentPage = 0
     }
     
-    private let dataViewControllers = [UIViewController]().with {
-        for _ in 0..<2 {
+    private var dataViewControllers = [UIViewController]().with { array in
+        UserData.shared.items.forEach { model in
             let vc = CityViewController()
-            $0.append(vc)
+            array.append(vc)
         }
     }
     
