@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import UIKit
 
-final class KeyboardMonitor : ObservableObject {
+final class KeyboardMonitor: ObservableObject {
     
     enum Status {
         case show, hide
