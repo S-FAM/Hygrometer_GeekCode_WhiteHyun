@@ -13,7 +13,7 @@ final class KeyboardMonitor : ObservableObject {
     
     enum Status {
         case show, hide
-        var description : String {
+        var description: String {
             switch self {
             case .show: return "보임"
             case .hide: return "안보임"
