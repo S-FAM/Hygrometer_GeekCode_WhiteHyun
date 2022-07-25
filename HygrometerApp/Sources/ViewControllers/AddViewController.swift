@@ -79,7 +79,7 @@ class AddViewController: UIViewController {
     
     /// 검색어를 통해 GPS검색하는 함수
     /// - Parameter searchStr: 서치바의 검색어
-    func searchLocation(searchStr: String) {
+    private func searchLocation(searchStr: String) {
         
         let model = GpsRequest(
             key: Private.gpsSecretKey,
@@ -143,7 +143,7 @@ class AddViewController: UIViewController {
 
 extension AddViewController {
     
-    func setLayout() {
+    private func setLayout() {
         self.view.backgroundColor = .themeColor.withAlphaComponent(0.7)
         self.view.addSubview(cityListSearchBar)
         self.view.addSubview(emptyResultView)
@@ -182,7 +182,7 @@ extension AddViewController {
         }
     }
     
-    func setStyles() {
+    private func setStyles() {
         
         guard let textfield = cityListSearchBar.value(forKey: "searchField") as? UITextField else { return }
         
@@ -227,7 +227,6 @@ extension AddViewController: UITableViewDelegate {
         
         let model = UserDataModel(id: id, city: city, point: point)
         UserData.shared.items.append(model)
-        
         navigationController?.popViewController(animated: true)
     }
 }
