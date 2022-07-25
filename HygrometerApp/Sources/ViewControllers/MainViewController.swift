@@ -20,7 +20,9 @@ final class MainViewController: UIViewController {
         transitionStyle: .scroll,
         navigationOrientation: .horizontal
     ).then {
-        $0.setViewControllers([CityViewController()], direction: .forward, animated: true)
+        $0.setViewControllers([dataViewControllers[0]], direction: .forward, animated: true)
+        $0.dataSource = self
+        $0.delegate = self
     }
     
     private lazy var listButton = UIButton().then {
@@ -33,6 +35,21 @@ final class MainViewController: UIViewController {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
         $0.tintColor = .label
         $0.addTarget(self, action: #selector(plusButtonDidTap), for: .touchUpInside)
+    }
+    
+    private lazy var control = UIPageControl().then {
+        $0.currentPageIndicatorTintColor = .white
+        $0.pageIndicatorTintColor = .white.withAlphaComponent(0.3)
+        $0.backgroundColor = .label.withAlphaComponent(0.3)
+        $0.numberOfPages = dataViewControllers.count
+        $0.currentPage = 0
+    }
+    
+    private let dataViewControllers = [UIViewController]().with {
+        for _ in 0..<2 {
+            let vc = CityViewController()
+            $0.append(vc)
+        }
     }
     
     // MARK: - Life cycle
@@ -48,11 +65,8 @@ final class MainViewController: UIViewController {
     
     /// view에 올려놓을 프로퍼티를 설정합니다. `addSubview` 메서드를 여기에 작성합니다.
     private func setupLayouts() {
-        view.addSubview(pageViewController.view)
-        view.addSubview(listButton)
-        view.addSubview(plusButton)
+        [pageViewController.view, listButton, plusButton, control].forEach { view.addSubview($0) }
     }
-    
     
     /// 프로퍼티의 제약조건을 설정합니다.
     private func setupConstraints() {
@@ -71,6 +85,11 @@ final class MainViewController: UIViewController {
             make.top.equalTo(listButton.snp.bottom).inset(5)
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(25)
             make.width.height.equalTo(50)
+        }
+        
+        control.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -91,5 +110,47 @@ final class MainViewController: UIViewController {
     @objc func plusButtonDidTap() {
         let vc = AddViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: - UIPageViewControllerDataSource
+
+extension MainViewController: UIPageViewControllerDataSource {
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerBefore viewController: UIViewController
+    ) -> UIViewController? {
+        guard let index = dataViewControllers.firstIndex(of: viewController),
+              index > 0
+        else {
+            return nil
+        }
+        return dataViewControllers[index - 1]
+    }
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerAfter viewController: UIViewController
+    ) -> UIViewController? {
+        guard let index = dataViewControllers.firstIndex(of: viewController),
+              index + 1 < dataViewControllers.count
+        else {
+            return nil
+        }
+        return dataViewControllers[index + 1]
+        
+    }
+}
+
+extension MainViewController: UIPageViewControllerDelegate {
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
+        guard let vc = pageViewController.viewControllers?.first,
+              let index = dataViewControllers.firstIndex(of: vc) else {
+            return
+        }
+        control.currentPage = index
     }
 }
