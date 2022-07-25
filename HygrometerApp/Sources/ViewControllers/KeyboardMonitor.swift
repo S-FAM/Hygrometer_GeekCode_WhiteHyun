@@ -31,31 +31,34 @@ final class KeyboardMonitor: ObservableObject {
     }
 
     init() {
-                
+               
+        Timer.publish(every: 1, on: .main, in: .default)
+            .autoconnect()
+            .sink {
+                print($0)
+            }.store(in: &subscriptions)
         // 키보드가 올라올 때 이벤트가 들어옴
         NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillShowNotification) // 아래 값을 구독
-            .sink { noti in
-                self.keyboardMonitorNoti(noti: noti)
-                self.updatedKeyboardStatusAction = .show
+            .sink { [weak self] noti in
+                self?.keyboardMonitorNoti(noti: noti)
+                self?.updatedKeyboardStatusAction = .show
             }.store(in: &subscriptions)
-        
+
         // 키보드가 내려갈 때 이벤트가 들어옴
         NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillHideNotification)
-            .sink { noti in
-                self.keyboardMonitorNoti(noti: noti)
-                self.updatedKeyboardStatusAction = .hide
+            .sink { [weak self] noti in
+                self?.keyboardMonitorNoti(noti: noti)
+                self?.updatedKeyboardStatusAction = .hide
             }.store(in: &subscriptions)
 
-        
         // 키보드 크기가 변경될 때 이벤트가 들어옴
         NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillChangeFrameNotification)
-            .sink { noti in
-                self.keyboardMonitorNoti(noti: noti)
+            .sink { [weak self] noti in
+                self?.keyboardMonitorNoti(noti: noti)
                 let keyboardFrame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-                self.keyboardHeight = keyboardFrame.height
-
+                self?.keyboardHeight = keyboardFrame.height
             }.store(in: &subscriptions)
-        
+
         /// 키보드 올라온 이벤트 처리 -> 키보드 높이
         NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillShowNotification)
             .merge(with: NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillChangeFrameNotification))
@@ -63,14 +66,18 @@ final class KeyboardMonitor: ObservableObject {
                 return noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
             }.map { keyboardFrame in
                 return keyboardFrame.height
-            }.subscribe(Subscribers.Assign(object: self, keyPath: \.keyboardHeight))
-            
-        
+            }
+            .sink { [weak self] height in
+                self?.keyboardHeight = height
+            }.store(in: &subscriptions)
+
         /// 키보드 내려갈때 이벤트 처리 -> 키보드 높이
         NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillHideNotification)
             .compactMap { noti in
                 return .zero
-            }.subscribe(Subscribers.Assign(object: self, keyPath: \.keyboardHeight))
-
+            }
+            .sink { [weak self] height in
+                self?.keyboardHeight = height
+            }.store(in: &subscriptions)
     }
 }
