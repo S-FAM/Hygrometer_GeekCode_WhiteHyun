@@ -13,6 +13,6 @@ struct CoordinateRequest: Codable {
     }
     
     init(key: String, point: Point) {
-        self.init(key: key, point: "\(point.x)\(point.y)")
+        self.init(key: key, point: "\(point.x),\(point.y)")
     }
 }
