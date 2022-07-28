@@ -107,11 +107,11 @@
 			isa = PBXGroup;
 			children = (
 				BA21D3AA2887BE8A0073C422 /* GpsRequest.swift */,
-				BAA0BE57289258B50044756B /* PhraseModel.swift */,
 				BA5FC6462887C9CF00A69902 /* GpsResponse.swift */,
 				BA0DCBBE2887E237003C059A /* WeatherRequest.swift */,
 				BA0DCBC02887E385003C059A /* WeatherResponse.swift */,
 				9CAAC4E6288080FC005B2136 /* UserData.swift */,
+				BAA0BE57289258B50044756B /* PhraseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

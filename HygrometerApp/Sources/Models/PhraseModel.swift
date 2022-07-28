@@ -7,6 +7,19 @@ enum PhraseModel {
     case normal
     case humid
     
+    init?(humidity: Int) {
+        switch humidity {
+        case 0...30:
+            self = .dry
+        case 31...60:
+            self = .normal
+        case 61...:
+            self = .humid
+        default:
+            return nil
+        }
+    }
+    
     var phrase: [String] {
         switch self {
         case .dry:
