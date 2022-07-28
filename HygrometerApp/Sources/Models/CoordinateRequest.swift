@@ -1,4 +1,4 @@
-/// 시/군/구 및 gps를 요청하기위해 필요한 파라미터 모델입니다.
+/// 좌표계로 도시명을 요청할 때 사용하는 모델입니다.
 struct CoordinateRequest: Codable {
     
     /// API Key
