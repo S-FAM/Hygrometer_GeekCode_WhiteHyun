@@ -84,17 +84,14 @@ final class CityViewController: UIViewController {
             lang: "ko"
         )
         API.weatherInformation(with: requestModel) { [weak self] in
-            switch $0 {
-            case .success(let result):
-                self?.humidityLabel.text = "\(result.main.humidity)%"
-                
-                // 습도별 문구 아무 거나 선택해서 보여줌
-                if let phrase = PhraseModel(humidity: result.main.humidity)?.phrase.randomElement() {
-                    self?.phraseLabel.text = phrase
-                }
-            case .failure(let error):
-                print(error)
+            guard case let .success(result) = $0,
+                  let phrase = PhraseModel(humidity: result.main.humidity)?.phrase.randomElement()
+            else {
+                return
             }
+            self?.humidityLabel.text = "\(result.main.humidity)%"
+            // 습도별 문구 아무 거나 선택해서 보여줌
+            self?.phraseLabel.text = phrase
         }
     }
 }
