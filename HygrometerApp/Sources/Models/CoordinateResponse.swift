@@ -1,4 +1,4 @@
-/// 시/군/구 및 gps를 요청하기위해 필요한 파라미터 모델입니다.
+/// 도시이름을 반환하는 모델입니다.
 struct CoordinateResponse: Codable {
     let response: CRResponse
 }
