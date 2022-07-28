@@ -18,7 +18,7 @@ class CityViewController: UIViewController {
     private lazy var cityTitleLabel = UILabel().then {
         $0.textAlignment = .center
         $0.text = "서울"
-        $0.font = .systemFont(ofSize: 34)
+        $0.font = .systemFont(ofSize: 30)
     }
     
     /// 습도(%)를 표시해주는 label 입니다.
@@ -32,7 +32,7 @@ class CityViewController: UIViewController {
     /// 습도에 따른 문구를 표시해주는 label 입니다.
     private lazy var phraseLabel = UILabel().then {
         $0.textAlignment = .center
-        $0.text = "물을 축이세요"
+        $0.text = "목을 축이세요"
         $0.font = .systemFont(ofSize: 20, weight: .semibold)
     }
     
