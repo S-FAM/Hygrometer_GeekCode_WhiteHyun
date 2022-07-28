@@ -103,12 +103,12 @@ final class MainViewController: UIViewController {
     
     // MARK: - objc Function
     
-    @objc func listButtonDidTap() {
+    @objc private func listButtonDidTap() {
         let vc = ListViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func plusButtonDidTap() {
+    @objc private func plusButtonDidTap() {
         let vc = AddViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
