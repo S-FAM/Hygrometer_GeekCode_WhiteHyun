@@ -41,7 +41,7 @@ final class MainViewController: UIViewController {
         $0.currentPageIndicatorTintColor = .white
         $0.pageIndicatorTintColor = .white.withAlphaComponent(0.3)
         $0.backgroundColor = .label.withAlphaComponent(0.3)
-        $0.numberOfPages = dataViewControllers.count
+        $0.numberOfPages = dataViewControllers.count + 1
         $0.currentPage = 0
     }
     
@@ -60,6 +60,7 @@ final class MainViewController: UIViewController {
         setupLayouts()
         setupConstraints()
         setupStyles()
+        setupLocations()
     }
     
     // MARK: - Configuration
@@ -99,6 +100,37 @@ final class MainViewController: UIViewController {
     private func setupStyles() {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    /// 사용자 위치에 따른 습도 설정
+    private func setupLocations() {
+        
+        // 1. 사용자 위치 가져옴
+        LocationManager.shared.userLocation { location in
+            
+            // 2. 모델 생성
+            let requestModel = CoordinateRequest(
+                key: Private.gpsSecretKey,
+                point: Point(x: String(location.coordinate.longitude), y: String(location.coordinate.latitude))
+            )
+            
+            // 3. 좌표로 하여금 도시 이름 가져옴
+            API.cityName(with: requestModel) { [weak self] response in
+                guard case let .success(data) = response else { return }
+                let address = data.response.result[0].structure
+                
+                // 4. UserDataModel 생성
+                let model = UserDataModel(id: "", city: "\(address.country) \(address.city)", point: Point(x: String(location.coordinate.longitude), y: String(location.coordinate.latitude)))
+                
+                // 5. 사용자의 위치로 보여주는 VC 생성
+                let vc = CityViewController()
+                vc.configure(with: model)
+                
+                // 6. View 설정
+                self?.dataViewControllers.insert(vc, at: 0)
+                self?.pageViewController.setViewControllers([vc], direction: .forward, animated: false)
+            }
+        }
     }
     
     // MARK: - objc Function
