@@ -33,6 +33,7 @@
 		BA5FC6472887C9CF00A69902 /* GpsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5FC6462887C9CF00A69902 /* GpsResponse.swift */; };
 		BAA0BE58289258B50044756B /* PhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE57289258B50044756B /* PhraseModel.swift */; };
 		BAA0BE5B28926D400044756B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE5A28926D400044756B /* LocationManager.swift */; };
+		BAA0BE5D28929DF80044756B /* CoordinateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE5C28929DF80044756B /* CoordinateRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		BA5FC6462887C9CF00A69902 /* GpsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsResponse.swift; sourceTree = "<group>"; };
 		BAA0BE57289258B50044756B /* PhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseModel.swift; sourceTree = "<group>"; };
 		BAA0BE5A28926D400044756B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		BAA0BE5C28929DF80044756B /* CoordinateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		BA21D3AE2887C8C10073C422 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BAA0BE5C28929DF80044756B /* CoordinateRequest.swift */,
 				BA21D3AA2887BE8A0073C422 /* GpsRequest.swift */,
 				BA5FC6462887C9CF00A69902 /* GpsResponse.swift */,
 				BA0DCBBE2887E237003C059A /* WeatherRequest.swift */,
@@ -295,6 +298,7 @@
 				9C15D8F3287C5D5B00486F85 /* API.swift in Sources */,
 				9CD4F72E288458D600DDC7FD /* CityListTableViewCell.swift in Sources */,
 				BA3DBC3D2879B438005BA6F0 /* SceneDelegate.swift in Sources */,
+				BAA0BE5D28929DF80044756B /* CoordinateRequest.swift in Sources */,
 				BA0420602889331F004D8834 /* UIView.swift in Sources */,
 				9CD4F732288458EA00DDC7FD /* WeatherListTableViewCell.swift in Sources */,
 			);
