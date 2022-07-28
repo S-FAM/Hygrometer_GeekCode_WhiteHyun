@@ -70,7 +70,7 @@ final class CityViewController: UIViewController {
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(56)
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(80)
         }
     }
     
