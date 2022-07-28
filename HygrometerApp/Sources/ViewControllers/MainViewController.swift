@@ -20,7 +20,6 @@ final class MainViewController: UIViewController {
         transitionStyle: .scroll,
         navigationOrientation: .horizontal
     ).then {
-        $0.setViewControllers([dataViewControllers[0]], direction: .forward, animated: true)
         $0.dataSource = self
         $0.delegate = self
     }
