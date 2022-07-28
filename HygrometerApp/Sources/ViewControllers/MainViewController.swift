@@ -43,6 +43,7 @@ final class MainViewController: UIViewController {
         $0.backgroundColor = .label.withAlphaComponent(0.3)
         $0.numberOfPages = dataViewControllers.count + 1
         $0.currentPage = 0
+        $0.setIndicatorImage(UIImage(systemName: "location.fill"), forPage: 0)
     }
     
     private var dataViewControllers = [UIViewController]().with { array in
