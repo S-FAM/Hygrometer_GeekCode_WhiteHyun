@@ -12,6 +12,7 @@ class WeatherListTableViewCell: UITableViewCell {
     let containerView = UIView()
     let locationNameLabel = UILabel()
     let humidityLabel = UILabel()
+    let plusView = UIView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

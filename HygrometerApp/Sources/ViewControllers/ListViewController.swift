@@ -11,8 +11,7 @@ class ListViewController: UIViewController {
     
     //MARK: - Properties
     var weatherModel: WeatherRequest?
-    var weatherList: WeatherResponse?
-    var userData: UserDataModel?
+    var weatherList: [WeatherResponse] = []
     
     lazy var weatherListTableView = UITableView().then {
         $0.backgroundColor = .clear
@@ -33,7 +32,7 @@ extension ListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10
+        return weatherList.count + 1
     }
 }
 
@@ -45,6 +44,10 @@ extension ListViewController: UITableViewDataSource {
         
         cell.locationNameLabel.text = ""
         cell.humidityLabel.text = ""
+        
+        cell.plusView.isHidden = ( indexPath.row == weatherList.count + 1 ) ? true : false
+            
+       
         return cell
     }
     
