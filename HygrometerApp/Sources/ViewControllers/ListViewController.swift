@@ -16,7 +16,6 @@ class ListViewController: UIViewController {
     
     lazy var weatherListTableView = UITableView().then {
         $0.backgroundColor = .clear
-        $0.keyboardDismissMode = .onDrag
         $0.dataSource = self
         $0.delegate = self
         $0.register(CityListTableViewCell.self, forCellReuseIdentifier: "CityListTableViewCell")
