@@ -73,6 +73,26 @@ class CityViewController: UIViewController {
     }
     
     func configure(with model: UserDataModel) {
+        cityTitleLabel.text = model.city
         
+        let requestModel = WeatherRequest(
+            lat: model.point.y,
+            lon: model.point.x,
+            appID: Private.weatherSecretKey,
+            lang: "ko"
+        )
+        API.weatherInformation(with: requestModel) { [weak self] in
+            switch $0 {
+            case .success(let result):
+                self?.humidityLabel.text = "\(result.main.humidity)%"
+                
+                // 습도별 문구 아무 거나 선택해서 보여줌
+                if let phrase = PhraseModel(humidity: result.main.humidity)?.phrase.randomElement() {
+                    self?.phraseLabel.text = phrase
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
