@@ -63,6 +63,11 @@ final class MainViewController: UIViewController {
         setupLocations()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadPages()
+    }
+    
     // MARK: - Configuration
     
     /// view에 올려놓을 프로퍼티를 설정합니다. `addSubview` 메서드를 여기에 작성합니다.
@@ -130,6 +135,19 @@ final class MainViewController: UIViewController {
                 self?.dataViewControllers.insert(vc, at: 0)
                 self?.pageViewController.setViewControllers([vc], direction: .forward, animated: false)
             }
+        }
+    }
+    
+    private func reloadPages() {
+        let models = UserData.shared.items
+        control.numberOfPages = models.count + 1
+        guard let vcs = dataViewControllers as? [CityViewController] else { return }
+        // models의 id가 dataViewControllers의 id에 있는지 확인 후 없으면 추가
+        models.forEach { model in
+            guard vcs.first(where: { $0.id == model.id }) == nil else { return }
+            let vc = CityViewController()
+            vc.configure(with: model)
+            dataViewControllers.append(vc)
         }
     }
     

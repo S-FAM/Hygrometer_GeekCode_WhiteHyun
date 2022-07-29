@@ -14,6 +14,8 @@ final class CityViewController: UIViewController {
     
     // MARK: - Properties
     
+    public private(set) var id: String = ""
+    
     /// 도시 이름을 표시해주는 label 입니다.
     private lazy var cityTitleLabel = UILabel().then {
         $0.textAlignment = .center
@@ -76,6 +78,7 @@ final class CityViewController: UIViewController {
     
     func configure(with model: UserDataModel) {
         cityTitleLabel.text = model.city
+        id = model.id
         
         let requestModel = WeatherRequest(
             lat: model.point.y,
