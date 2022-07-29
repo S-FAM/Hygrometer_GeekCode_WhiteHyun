@@ -1,4 +1,3 @@
-import Combine
 import CoreLocation
 import Foundation
 
@@ -25,7 +24,8 @@ class LocationManager: NSObject {
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
-        completion?(location)
         manager.stopUpdatingLocation()
+        manager.delegate = nil
+        completion?(location)
     }
 }
