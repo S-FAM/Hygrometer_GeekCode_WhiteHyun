@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9C15D8F0287C5D3D00486F85 /* PrivateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15D8EF287C5D3D00486F85 /* PrivateInfo.swift */; };
 		9C15D8F3287C5D5B00486F85 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C15D8F2287C5D5B00486F85 /* API.swift */; };
+		9C1D9B0E28981934005CF6A6 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D9B0D28981934005CF6A6 /* ListViewModel.swift */; };
+		9C1D9B11289819E4005CF6A6 /* ListViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D9B10289819E4005CF6A6 /* ListViewCellViewModel.swift */; };
 		9CAAC4E7288080FC005B2136 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4E6288080FC005B2136 /* UserData.swift */; };
 		9CD4F72B28844F4200DDC7FD /* ShadowSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4F72A28844F4200DDC7FD /* ShadowSet.swift */; };
 		9CD4F72E288458D600DDC7FD /* CityListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4F72C288458D600DDC7FD /* CityListTableViewCell.swift */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		9C15D8EF287C5D3D00486F85 /* PrivateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateInfo.swift; sourceTree = "<group>"; };
 		9C15D8F2287C5D5B00486F85 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9C1D9B0D28981934005CF6A6 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		9C1D9B10289819E4005CF6A6 /* ListViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCellViewModel.swift; sourceTree = "<group>"; };
 		9CAAC4E6288080FC005B2136 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		9CD4F72A28844F4200DDC7FD /* ShadowSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowSet.swift; sourceTree = "<group>"; };
 		9CD4F72C288458D600DDC7FD /* CityListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTableViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 				9C15D8EF287C5D3D00486F85 /* PrivateInfo.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		9C1D9B0F28981941005CF6A6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9C1D9B0D28981934005CF6A6 /* ListViewModel.swift */,
+				9C1D9B10289819E4005CF6A6 /* ListViewCellViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		9CD4F734288458F200DDC7FD /* TableViewCells */ = {
@@ -149,6 +162,7 @@
 				BA666EF3288B0FD500A779BA /* Extensions */,
 				BAA0BE5928926D320044756B /* Managers */,
 				BA21D3AE2887C8C10073C422 /* Models */,
+				9C1D9B0F28981941005CF6A6 /* ViewModels */,
 				BA3DBC4F2879B4D5005BA6F0 /* ViewControllers */,
 			);
 			path = Sources;
@@ -286,12 +300,14 @@
 				BAA0BE58289258B50044756B /* PhraseModel.swift in Sources */,
 				BA3DBC532879B562005BA6F0 /* ListViewController.swift in Sources */,
 				BA0DCBC12887E385003C059A /* WeatherResponse.swift in Sources */,
+				9C1D9B11289819E4005CF6A6 /* ListViewCellViewModel.swift in Sources */,
 				BA0DCBBF2887E237003C059A /* WeatherRequest.swift in Sources */,
 				BAA0BE5B28926D400044756B /* LocationManager.swift in Sources */,
 				BA3DBC552879BE14005BA6F0 /* CityViewController.swift in Sources */,
 				9CD4F72B28844F4200DDC7FD /* ShadowSet.swift in Sources */,
 				9C15D8F3287C5D5B00486F85 /* API.swift in Sources */,
 				9CD4F72E288458D600DDC7FD /* CityListTableViewCell.swift in Sources */,
+				9C1D9B0E28981934005CF6A6 /* ListViewModel.swift in Sources */,
 				BA3DBC3D2879B438005BA6F0 /* SceneDelegate.swift in Sources */,
 				BAA0BE5D28929DF80044756B /* CoordinateRequest.swift in Sources */,
 				BAA0BE5F2892A13A0044756B /* CoordinateResponse.swift in Sources */,

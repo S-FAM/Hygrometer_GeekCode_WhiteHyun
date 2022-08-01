@@ -10,36 +10,39 @@ import UIKit
 class ListViewController: UIViewController {
     
     //MARK: - Properties
-    var weatherModel: WeatherRequest?
-    var weatherList: [WeatherResponse] = []
     
+    var viewModel = ListViewModel()
+
     lazy var weatherListTableView = UITableView().then {
         $0.backgroundColor = .clear
         $0.dataSource = self
         $0.delegate = self
         $0.register(WeatherListTableViewCell.self, forCellReuseIdentifier: "WeatherListTableViewCell")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupLayouts()
+        setupConstraints()
+        self.view.backgroundColor = .systemTeal
+        viewModel.setup() { [weak self] in
+            self?.weatherListTableView.reloadData()
+        }
     }
     
+       
+    // MARK: - Configuration
     
-    func setModel() {
-        let model = UserData.shared.items
-        
+    private func setupLayouts() {
+        self.view.addSubview(weatherListTableView)
     }
-   
-    func setupLayouts() {
-        view.addSubview(weatherListTableView)
+    
+    private func setupConstraints() {
         weatherListTableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
-        weatherListTableView.backgroundColor = .red.withAlphaComponent(0.5)
     }
-    
 }
 
 // MARK: - UITableViewDelegate
@@ -47,9 +50,7 @@ extension ListViewController: UITableViewDelegate {
  
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
-        return weatherList.count + 1
+        return UserData.shared.items.count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -62,15 +63,16 @@ extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherListTableViewCell", for: indexPath) as! WeatherListTableViewCell
-        
-        
 
-        let data = UserData.shared.items
-        cell.locationNameLabel.text = "수원시"
-        cell.humidityLabel.text = "50%"
+        if indexPath.row == UserData.shared.items.count {
+            cell.plusView.isHidden = false
+            return cell
+        }
         
-        cell.plusView.isHidden = ( indexPath.row == weatherList.count + 1 ) ? true : false
-       
+        let model = viewModel.models[indexPath.row]
+        cell.configure(with: model)
+        cell.plusView.isHidden = true
+        
         return cell
     }
     
