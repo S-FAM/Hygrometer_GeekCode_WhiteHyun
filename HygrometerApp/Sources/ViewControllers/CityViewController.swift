@@ -10,15 +10,18 @@ import UIKit
 import SnapKit
 import Then
 
-class CityViewController: UIViewController {
+final class CityViewController: UIViewController {
     
     // MARK: - Properties
+    
+    public private(set) var id: String = ""
     
     /// 도시 이름을 표시해주는 label 입니다.
     private lazy var cityTitleLabel = UILabel().then {
         $0.textAlignment = .center
         $0.text = "서울"
-        $0.font = .systemFont(ofSize: 34)
+        $0.font = .systemFont(ofSize: 30)
+        $0.adjustsFontSizeToFitWidth = true
     }
     
     /// 습도(%)를 표시해주는 label 입니다.
@@ -32,8 +35,9 @@ class CityViewController: UIViewController {
     /// 습도에 따른 문구를 표시해주는 label 입니다.
     private lazy var phraseLabel = UILabel().then {
         $0.textAlignment = .center
-        $0.text = "물을 축이세요"
+        $0.text = "목을 축이세요"
         $0.font = .systemFont(ofSize: 20, weight: .semibold)
+        $0.adjustsFontSizeToFitWidth = true
     }
     
     
@@ -68,7 +72,29 @@ class CityViewController: UIViewController {
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(56)
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(80)
+        }
+    }
+    
+    func configure(with model: UserDataModel) {
+        cityTitleLabel.text = model.city
+        id = model.id
+        
+        let requestModel = WeatherRequest(
+            lat: model.point.y,
+            lon: model.point.x,
+            appID: Private.weatherSecretKey,
+            lang: "ko"
+        )
+        API.weatherInformation(with: requestModel) { [weak self] in
+            guard case let .success(result) = $0,
+                  let phrase = PhraseModel(humidity: result.main.humidity)?.phrase.randomElement()
+            else {
+                return
+            }
+            self?.humidityLabel.text = "\(result.main.humidity)%"
+            // 습도별 문구 아무 거나 선택해서 보여줌
+            self?.phraseLabel.text = phrase
         }
     }
 }

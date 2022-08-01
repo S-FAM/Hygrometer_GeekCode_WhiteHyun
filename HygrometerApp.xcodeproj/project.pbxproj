@@ -31,6 +31,10 @@
 		BA3DBC5B2879C349005BA6F0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC5A2879C349005BA6F0 /* SnapKit */; };
 		BA3DBC5E2879C36F005BA6F0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC5D2879C36F005BA6F0 /* Alamofire */; };
 		BA5FC6472887C9CF00A69902 /* GpsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5FC6462887C9CF00A69902 /* GpsResponse.swift */; };
+		BAA0BE58289258B50044756B /* PhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE57289258B50044756B /* PhraseModel.swift */; };
+		BAA0BE5B28926D400044756B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE5A28926D400044756B /* LocationManager.swift */; };
+		BAA0BE5D28929DF80044756B /* CoordinateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE5C28929DF80044756B /* CoordinateRequest.swift */; };
+		BAA0BE5F2892A13A0044756B /* CoordinateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE5E2892A13A0044756B /* CoordinateResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +61,10 @@
 		BA3DBC522879B562005BA6F0 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		BA3DBC542879BE14005BA6F0 /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		BA5FC6462887C9CF00A69902 /* GpsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsResponse.swift; sourceTree = "<group>"; };
+		BAA0BE57289258B50044756B /* PhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseModel.swift; sourceTree = "<group>"; };
+		BAA0BE5A28926D400044756B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		BAA0BE5C28929DF80044756B /* CoordinateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateRequest.swift; sourceTree = "<group>"; };
+		BAA0BE5E2892A13A0044756B /* CoordinateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,14 +99,24 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
+		BA08A81C288EDF0A00DC326E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		BA21D3AE2887C8C10073C422 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BAA0BE5C28929DF80044756B /* CoordinateRequest.swift */,
+				BAA0BE5E2892A13A0044756B /* CoordinateResponse.swift */,
 				BA21D3AA2887BE8A0073C422 /* GpsRequest.swift */,
 				BA5FC6462887C9CF00A69902 /* GpsResponse.swift */,
 				BA0DCBBE2887E237003C059A /* WeatherRequest.swift */,
 				BA0DCBC02887E385003C059A /* WeatherResponse.swift */,
 				9CAAC4E6288080FC005B2136 /* UserData.swift */,
+				BAA0BE57289258B50044756B /* PhraseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -136,7 +154,9 @@
 				BA3DBC3A2879B438005BA6F0 /* AppDelegate.swift */,
 				BA3DBC3C2879B438005BA6F0 /* SceneDelegate.swift */,
 				BA666EF3288B0FD500A779BA /* Extensions */,
+				BAA0BE5928926D320044756B /* Managers */,
 				BA21D3AE2887C8C10073C422 /* Models */,
+				BA08A81C288EDF0A00DC326E /* ViewModels */,
 				BA3DBC4F2879B4D5005BA6F0 /* ViewControllers */,
 			);
 			path = Sources;
@@ -172,6 +192,14 @@
 				BA04205D288932F7004D8834 /* UIColor.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BAA0BE5928926D320044756B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BAA0BE5A28926D400044756B /* LocationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,14 +291,18 @@
 				BA5FC6472887C9CF00A69902 /* GpsResponse.swift in Sources */,
 				BA04205E288932F7004D8834 /* UIColor.swift in Sources */,
 				9CAAC4E7288080FC005B2136 /* UserData.swift in Sources */,
+				BAA0BE58289258B50044756B /* PhraseModel.swift in Sources */,
 				BA3DBC532879B562005BA6F0 /* ListViewController.swift in Sources */,
 				BA0DCBC12887E385003C059A /* WeatherResponse.swift in Sources */,
 				BA0DCBBF2887E237003C059A /* WeatherRequest.swift in Sources */,
+				BAA0BE5B28926D400044756B /* LocationManager.swift in Sources */,
 				BA3DBC552879BE14005BA6F0 /* CityViewController.swift in Sources */,
 				9CD4F72B28844F4200DDC7FD /* ShadowSet.swift in Sources */,
 				9C15D8F3287C5D5B00486F85 /* API.swift in Sources */,
 				9CD4F72E288458D600DDC7FD /* CityListTableViewCell.swift in Sources */,
 				BA3DBC3D2879B438005BA6F0 /* SceneDelegate.swift in Sources */,
+				BAA0BE5D28929DF80044756B /* CoordinateRequest.swift in Sources */,
+				BAA0BE5F2892A13A0044756B /* CoordinateResponse.swift in Sources */,
 				BA0420602889331F004D8834 /* UIView.swift in Sources */,
 				9CD4F732288458EA00DDC7FD /* WeatherListTableViewCell.swift in Sources */,
 			);

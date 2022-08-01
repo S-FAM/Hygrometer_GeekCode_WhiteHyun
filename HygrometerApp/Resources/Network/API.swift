@@ -46,11 +46,21 @@ public struct API {
             }
             .resume()
     }
+    
+    static func cityName(with model: CoordinateRequest, completion: @escaping (Result<CoordinateResponse, AFError>) -> Void) {
+        AF
+            .request(ApiType.coordinate.host, method: .get, parameters: model)
+            .responseDecodable(of: CoordinateResponse.self) {
+                completion($0.result)
+            }
+            .resume()
+    }
 }
 
 enum ApiType {
     case gps
     case weather
+    case coordinate
     
     init() {
         self = .gps
@@ -59,6 +69,7 @@ enum ApiType {
     var host: String {
         switch self {
         case .gps: return "https://api.vworld.kr/req/search?"
+        case .coordinate: return "https://api.vworld.kr/req/address?service=address&request=getAddress&type=both&simple=true&zipcode=false&"
         case .weather: return "https://api.openweathermap.org/data/2.5/weather?"
         }
     }
