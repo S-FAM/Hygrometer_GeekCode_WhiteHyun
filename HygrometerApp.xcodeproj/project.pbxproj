@@ -99,13 +99,6 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
-		BA08A81C288EDF0A00DC326E /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		BA21D3AE2887C8C10073C422 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +149,6 @@
 				BA666EF3288B0FD500A779BA /* Extensions */,
 				BAA0BE5928926D320044756B /* Managers */,
 				BA21D3AE2887C8C10073C422 /* Models */,
-				BA08A81C288EDF0A00DC326E /* ViewModels */,
 				BA3DBC4F2879B4D5005BA6F0 /* ViewControllers */,
 			);
 			path = Sources;

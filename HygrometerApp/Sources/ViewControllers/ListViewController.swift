@@ -17,13 +17,29 @@ class ListViewController: UIViewController {
         $0.backgroundColor = .clear
         $0.dataSource = self
         $0.delegate = self
-        $0.register(CityListTableViewCell.self, forCellReuseIdentifier: "CityListTableViewCell")
+        $0.register(WeatherListTableViewCell.self, forCellReuseIdentifier: "WeatherListTableViewCell")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemTeal
+        self.view.backgroundColor = .white
+        setupLayouts()
     }
+    
+    
+    func setModel() {
+        let model = UserData.shared.items
+        
+    }
+   
+    func setupLayouts() {
+        view.addSubview(weatherListTableView)
+        weatherListTableView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        weatherListTableView.backgroundColor = .red.withAlphaComponent(0.5)
+    }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -32,7 +48,12 @@ extension ListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        
         return weatherList.count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
 
@@ -42,11 +63,13 @@ extension ListViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherListTableViewCell", for: indexPath) as! WeatherListTableViewCell
         
-        cell.locationNameLabel.text = ""
-        cell.humidityLabel.text = ""
+        
+
+        let data = UserData.shared.items
+        cell.locationNameLabel.text = "수원시"
+        cell.humidityLabel.text = "50%"
         
         cell.plusView.isHidden = ( indexPath.row == weatherList.count + 1 ) ? true : false
-            
        
         return cell
     }
