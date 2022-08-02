@@ -24,10 +24,6 @@ final class KeyboardMonitor {
 
     @Published var updatedKeyboardStatusAction: Status = .hide
 
-    func keyboardMonitorNoti(noti: Notification) {
-        print("KeyboardMonitor - keyboardWillShowNotification: noti: \(noti)") //Here
-    }
-
     init() {
                
         Timer.publish(every: 1, on: .main, in: .default)
@@ -36,16 +32,14 @@ final class KeyboardMonitor {
                 print($0)
             }.store(in: &subscriptions)
         // 키보드가 올라올 때 이벤트가 들어옴
-        NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillShowNotification) // 아래 값을 구독
+        NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillShowNotification)
             .sink { [weak self] noti in
-                self?.keyboardMonitorNoti(noti: noti)
                 self?.updatedKeyboardStatusAction = .show
             }.store(in: &subscriptions)
 
         // 키보드가 내려갈 때 이벤트가 들어옴
         NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillHideNotification)
             .sink { [weak self] noti in
-                self?.keyboardMonitorNoti(noti: noti)
                 self?.updatedKeyboardStatusAction = .hide
             }.store(in: &subscriptions)
     }
