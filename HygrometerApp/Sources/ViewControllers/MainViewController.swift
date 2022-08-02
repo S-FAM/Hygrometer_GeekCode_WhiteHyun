@@ -138,6 +138,19 @@ final class MainViewController: UIViewController {
         }
     }
     
+    private func setBackgroundImage(with humidity: Int) {
+        guard let phraseModel = PhraseModel(humidity: humidity),
+              let backgroundImage = UIImage.backgroundImage(with: phraseModel)
+        else {
+            return
+        }
+        
+        UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve) { [weak self] in
+            self?.view.backgroundColor = .init(patternImage: backgroundImage).withAlphaComponent(0.8)
+        }
+    }
+    
+    
     private func reloadPages() {
         let models = UserData.shared.items
         control.numberOfPages = models.count + 1
@@ -198,10 +211,12 @@ extension MainViewController: UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         
-        guard let vc = pageViewController.viewControllers?.first,
+        guard let vc = pageViewController.viewControllers?.first as? CityViewController,
               let index = dataViewControllers.firstIndex(of: vc) else {
             return
         }
         control.currentPage = index
+        
+        setBackgroundImage(with: vc.humidity)
     }
 }
