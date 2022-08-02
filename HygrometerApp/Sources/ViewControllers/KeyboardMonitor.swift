@@ -11,19 +11,14 @@ import UIKit
 final class KeyboardMonitor {
     
     enum Status {
-        case show, hide
-        var description: String {
-            switch self {
-            case .show: return "보임"
-            case .hide: return "안보임"
-            }
-        }
+        case show
+        case hide
     }
-
+    
     var subscriptions = Set<AnyCancellable>()
-
+    
     @Published var updatedKeyboardStatusAction: Status = .hide
-
+    
     init() {
         
         // 키보드가 올라올 때 이벤트가 들어옴
@@ -31,7 +26,7 @@ final class KeyboardMonitor {
             .sink { [weak self] noti in
                 self?.updatedKeyboardStatusAction = .show
             }.store(in: &subscriptions)
-
+        
         // 키보드가 내려갈 때 이벤트가 들어옴
         NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillHideNotification)
             .sink { [weak self] noti in
