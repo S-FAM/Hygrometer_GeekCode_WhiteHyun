@@ -25,12 +25,7 @@ final class KeyboardMonitor {
     @Published var updatedKeyboardStatusAction: Status = .hide
 
     init() {
-               
-        Timer.publish(every: 1, on: .main, in: .default)
-            .autoconnect()
-            .sink {
-                print($0)
-            }.store(in: &subscriptions)
+        
         // 키보드가 올라올 때 이벤트가 들어옴
         NotificationCenter.Publisher(center: .default, name: UIResponder.keyboardWillShowNotification)
             .sink { [weak self] noti in
