@@ -5,6 +5,7 @@
 //  Created by hyeonseok on 2022/07/11.
 //
 
+import Combine
 import Foundation
 
 import Alamofire
@@ -54,6 +55,22 @@ public struct API {
                 completion($0.result)
             }
             .resume()
+    }
+    
+    static func cityNamePublisher(with model: CoordinateRequest) -> Future<CoordinateResponse, AFError> {
+        
+        return Future<CoordinateResponse, AFError> { promise in
+            AF
+                .request(ApiType.coordinate.host, method: .get, parameters: model)
+                .responseDecodable(of: CoordinateResponse.self) {
+                    switch $0.result {
+                    case .success(let data):
+                        promise(.success(data))
+                    case .failure(let error):
+                        promise(.failure(error))
+                    }
+                }
+        }
     }
 }
 
