@@ -5,6 +5,7 @@
 //  Created by 홍승현 on 2022/07/09.
 //
 
+import Combine
 import UIKit
 
 import SnapKit
@@ -52,6 +53,8 @@ final class MainViewController: UIViewController {
             array.append(vc)
         }
     }
+    
+    private var subscriptions = Set<AnyCancellable>()
     
     // MARK: - Life cycle
     
@@ -111,7 +114,7 @@ final class MainViewController: UIViewController {
     private func setupLocations() {
         
         // 1. 사용자 위치 가져옴
-        LocationManager.shared.userLocation { location in
+        LocationManager.shared.userLocation { [unowned self] location in
             
             // 2. 모델 생성
             let requestModel = CoordinateRequest(
@@ -120,7 +123,7 @@ final class MainViewController: UIViewController {
             )
             
             // 3. 좌표로 하여금 도시 이름 가져옴
-            API.cityName(with: requestModel) { [weak self] response in
+            API.cityName(with: requestModel) { response in
                 guard case let .success(data) = response else { return }
                 let address = data.response.result[0].structure
                 
@@ -132,8 +135,14 @@ final class MainViewController: UIViewController {
                 vc.configure(with: model)
                 
                 // 6. View 설정
-                self?.dataViewControllers.insert(vc, at: 0)
-                self?.pageViewController.setViewControllers([vc], direction: .forward, animated: false)
+                self.dataViewControllers.insert(vc, at: 0)
+                self.pageViewController.setViewControllers([vc], direction: .forward, animated: false)
+                
+                vc.$humidity
+                    .sink {
+                        self.setBackgroundImage(with: $0)
+                    }
+                    .store(in: &self.subscriptions)
             }
         }
     }
