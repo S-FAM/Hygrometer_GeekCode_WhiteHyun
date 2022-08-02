@@ -87,16 +87,13 @@ final class CityViewController: UIViewController {
       
         API.weatherInformation(with: requestModel) { [weak self] in
             guard case let .success(result) = $0,
-                  let phraseModel = PhraseModel(humidity: result.main.humidity),
-                  let backgroundImage = UIImage.backgroundImage(with: phraseModel)
+                  let phraseModel = PhraseModel(humidity: result.main.humidity)
             else {
                 return
             }
             self?.humidityLabel.text = "\(result.main.humidity)%"
             // 습도별 문구 아무 거나 선택해서 보여줌
             self?.phraseLabel.text = phraseModel.phrase.randomElement()
-            // background Image 설정
-            self?.view.backgroundColor = .init(patternImage: backgroundImage).withAlphaComponent(0.5)
         }
     }
 }
