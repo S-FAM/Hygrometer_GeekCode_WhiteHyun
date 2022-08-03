@@ -14,8 +14,8 @@
 		9CAAC4E7288080FC005B2136 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAC4E6288080FC005B2136 /* UserData.swift */; };
 		9CD4F72B28844F4200DDC7FD /* ShadowSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4F72A28844F4200DDC7FD /* ShadowSet.swift */; };
 		9CD4F72E288458D600DDC7FD /* CityListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4F72C288458D600DDC7FD /* CityListTableViewCell.swift */; };
-		9CD4F732288458EA00DDC7FD /* WeatherListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD4F730288458EA00DDC7FD /* WeatherListTableViewCell.swift */; };
 		9CE7E8BB288CF9AD00108CBD /* KeyboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE7E8BA288CF9AD00108CBD /* KeyboardMonitor.swift */; };
+		9CE9FE21289ABC1500D5A1F9 /* WeatherListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9FE20289ABC1500D5A1F9 /* WeatherListTableViewCell.swift */; };
 		BA04205E288932F7004D8834 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA04205D288932F7004D8834 /* UIColor.swift */; };
 		BA0420602889331F004D8834 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA04205F2889331F004D8834 /* UIView.swift */; };
 		BA0DCBBF2887E237003C059A /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DCBBE2887E237003C059A /* WeatherRequest.swift */; };
@@ -47,8 +47,8 @@
 		9CAAC4E6288080FC005B2136 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		9CD4F72A28844F4200DDC7FD /* ShadowSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowSet.swift; sourceTree = "<group>"; };
 		9CD4F72C288458D600DDC7FD /* CityListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTableViewCell.swift; sourceTree = "<group>"; };
-		9CD4F730288458EA00DDC7FD /* WeatherListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListTableViewCell.swift; sourceTree = "<group>"; };
 		9CE7E8BA288CF9AD00108CBD /* KeyboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardMonitor.swift; sourceTree = "<group>"; };
+		9CE9FE20289ABC1500D5A1F9 /* WeatherListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListTableViewCell.swift; sourceTree = "<group>"; };
 		BA04205D288932F7004D8834 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BA04205F2889331F004D8834 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		BA0DCBBE2887E237003C059A /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				9CD4F72C288458D600DDC7FD /* CityListTableViewCell.swift */,
-				9CD4F730288458EA00DDC7FD /* WeatherListTableViewCell.swift */,
+				9CE9FE20289ABC1500D5A1F9 /* WeatherListTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -297,6 +297,7 @@
 				BA5FC6472887C9CF00A69902 /* GpsResponse.swift in Sources */,
 				BA04205E288932F7004D8834 /* UIColor.swift in Sources */,
 				9CAAC4E7288080FC005B2136 /* UserData.swift in Sources */,
+				9CE9FE21289ABC1500D5A1F9 /* WeatherListTableViewCell.swift in Sources */,
 				BAA0BE58289258B50044756B /* PhraseModel.swift in Sources */,
 				BA3DBC532879B562005BA6F0 /* ListViewController.swift in Sources */,
 				BA0DCBC12887E385003C059A /* WeatherResponse.swift in Sources */,
@@ -312,7 +313,6 @@
 				BAA0BE5D28929DF80044756B /* CoordinateRequest.swift in Sources */,
 				BAA0BE5F2892A13A0044756B /* CoordinateResponse.swift in Sources */,
 				BA0420602889331F004D8834 /* UIView.swift in Sources */,
-				9CD4F732288458EA00DDC7FD /* WeatherListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
