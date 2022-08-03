@@ -54,7 +54,7 @@ extension ListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 170
     }
 }
 
@@ -65,6 +65,8 @@ extension ListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherListTableViewCell", for: indexPath) as! WeatherListTableViewCell
 
         if indexPath.row == UserData.shared.items.count {
+            cell.humidityLabel.isHidden = true
+            cell.locationNameLabel.isHidden = true
             cell.plusView.isHidden = false
             return cell
         }
@@ -75,5 +77,6 @@ extension ListViewController: UITableViewDataSource {
         
         return cell
     }
+    
     
 }
