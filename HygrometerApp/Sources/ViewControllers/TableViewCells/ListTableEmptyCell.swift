@@ -9,14 +9,29 @@ import UIKit
 
 class ListTableEmptyCell: UITableViewCell {
     
-    let containerView = UIView()
-    let plusView = UIImageView()
+    lazy var containerView = UIView().then {
+        $0.backgroundColor = .themeColor
+        $0.layer.shadowColor = ShadowSet.shadowColor
+        $0.layer.shadowOffset = ShadowSet.shadowOffsetStrong
+        $0.layer.shadowRadius = ShadowSet.shadowRadius
+        $0.layer.shadowOpacity = ShadowSet.shadowOpacityWeak
+        $0.layer.masksToBounds = false
+        $0.layer.cornerRadius = 20
+    }
+    
+    lazy var plusView = UIImageView().then {
+        let image = UIImage(systemName: "plus")
+        $0.image = image
+        $0.backgroundColor = .clear
+        $0.tintColor = .systemGray4
+        $0.contentMode = .scaleAspectFit
+        $0.layer.cornerRadius = 20
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         setLayout()
-        setDetail()
     }
     
     required init?(coder: NSCoder) {
@@ -38,27 +53,4 @@ class ListTableEmptyCell: UITableViewCell {
             make.edges.equalTo(containerView).inset(30)
         }
     }
-    
-    func setDetail() {
-        
-        backgroundColor = .clear
-        selectionStyle = .none
-        containerView.backgroundColor = .themeColor
-        containerView.layer.cornerRadius = 20
-        //그림자
-        containerView.layer.shadowColor = ShadowSet.shadowColor
-        containerView.layer.shadowOffset = ShadowSet.shadowOffsetStrong
-        containerView.layer.shadowRadius = ShadowSet.shadowRadius
-        containerView.layer.shadowOpacity = ShadowSet.shadowOpacityWeak
-        containerView.layer.masksToBounds = false
-
-        
-        let image = UIImage(systemName: "plus")
-        plusView.image = image
-        plusView.backgroundColor = .clear
-        plusView.layer.cornerRadius = 20
-        plusView.tintColor = .systemGray4
-        plusView.contentMode = .scaleAspectFit
-    }
-    
 }
