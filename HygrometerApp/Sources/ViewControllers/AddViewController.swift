@@ -144,7 +144,7 @@ class AddViewController: UIViewController {
 extension AddViewController {
     
     private func setLayout() {
-        self.view.backgroundColor = .themeColor.withAlphaComponent(0.7)
+        self.view.backgroundColor = .black
         self.view.addSubview(cityListSearchBar)
         self.view.addSubview(emptyResultView)
         self.view.addSubview(cityListTableView)

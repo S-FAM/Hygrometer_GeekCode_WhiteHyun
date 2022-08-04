@@ -23,10 +23,9 @@ class ListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .clear
+        self.view.backgroundColor = .systemCyan
         setupLayouts()
         setupConstraints()
-        self.view.backgroundColor = .systemTeal
         viewModel.setup() { [weak self] in
             self?.weatherListTableView.reloadData()
         }
