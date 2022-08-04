@@ -78,5 +78,23 @@ extension ListViewController: UITableViewDataSource {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == UserData.shared.items.count {
+            
+            let vc = AddViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let alertVC = UIAlertController(title: "", message: "삭제하시겠습니까?", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            let confirm = UIAlertAction(title: "확인", style: .default, handler: nil)
+            [
+                cancel,
+                confirm
+            ].forEach {
+                alertVC.addAction($0)
+            }
+            self.present(alertVC, animated: true, completion: nil)
+        }
+    }
 }
