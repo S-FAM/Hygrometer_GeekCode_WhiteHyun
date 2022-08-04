@@ -22,7 +22,7 @@ class ListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .clear
         setupLayouts()
         setupConstraints()
         self.view.backgroundColor = .systemTeal
