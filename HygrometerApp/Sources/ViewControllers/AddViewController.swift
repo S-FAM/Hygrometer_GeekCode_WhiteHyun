@@ -261,10 +261,10 @@ extension AddViewController: UITableViewDataSource {
 extension AddViewController {
     /// 키보드 이벤트처리
     private func observingKeyboardEvent() { //키보드 height를 받아서 처리
-        keyboardMonitor?.$keyboardHeight.sink { [weak self] height in
+        keyboardMonitor?.$status.sink { [weak self] mode in
             
             //키보드의 높이가 변할때 tempView를 띄워서 상단 터치시 dismiss처리
-            self?.tempView.isHidden = height > 0 ? false : true
+            self?.tempView.isHidden = mode == KeyboardMonitor.Status.show ? false : true
  
         }.store(in: &subscriptions)
     }
