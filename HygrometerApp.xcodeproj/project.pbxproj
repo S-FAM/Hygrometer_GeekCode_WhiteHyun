@@ -19,7 +19,6 @@
 		9CE9FE27289BFC3900D5A1F9 /* ListTableEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9FE26289BFC3900D5A1F9 /* ListTableEmptyCell.swift */; };
 		BA04205E288932F7004D8834 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA04205D288932F7004D8834 /* UIColor.swift */; };
 		BA0420602889331F004D8834 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA04205F2889331F004D8834 /* UIView.swift */; };
-		BA09CFAB28963C37001F8F5F /* UIImage+backgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA09CFAA28963C37001F8F5F /* UIImage+backgroundImage.swift */; };
 		BA0DCBBF2887E237003C059A /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DCBBE2887E237003C059A /* WeatherRequest.swift */; };
 		BA0DCBC12887E385003C059A /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DCBC02887E385003C059A /* WeatherResponse.swift */; };
 		BA21D3AB2887BE8A0073C422 /* GpsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA21D3AA2887BE8A0073C422 /* GpsRequest.swift */; };
@@ -54,7 +53,6 @@
 		9CE9FE26289BFC3900D5A1F9 /* ListTableEmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableEmptyCell.swift; sourceTree = "<group>"; };
 		BA04205D288932F7004D8834 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BA04205F2889331F004D8834 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		BA09CFAA28963C37001F8F5F /* UIImage+backgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+backgroundImage.swift"; sourceTree = "<group>"; };
 		BA0DCBBE2887E237003C059A /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
 		BA0DCBC02887E385003C059A /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		BA21D3AA2887BE8A0073C422 /* GpsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsRequest.swift; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 				9CD4F72A28844F4200DDC7FD /* ShadowSet.swift */,
 				BA04205F2889331F004D8834 /* UIView.swift */,
 				BA04205D288932F7004D8834 /* UIColor.swift */,
-				BA09CFAA28963C37001F8F5F /* UIImage+backgroundImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,11 +300,7 @@
 				BA5FC6472887C9CF00A69902 /* GpsResponse.swift in Sources */,
 				BA04205E288932F7004D8834 /* UIColor.swift in Sources */,
 				9CAAC4E7288080FC005B2136 /* UserData.swift in Sources */,
-<<<<<<< HEAD
 				9CE9FE21289ABC1500D5A1F9 /* WeatherListTableViewCell.swift in Sources */,
-=======
-				BA09CFAB28963C37001F8F5F /* UIImage+backgroundImage.swift in Sources */,
->>>>>>> 52988f41317d1568352cc2aea319e4cb15ad744e
 				BAA0BE58289258B50044756B /* PhraseModel.swift in Sources */,
 				BA3DBC532879B562005BA6F0 /* ListViewController.swift in Sources */,
 				BA0DCBC12887E385003C059A /* WeatherResponse.swift in Sources */,
