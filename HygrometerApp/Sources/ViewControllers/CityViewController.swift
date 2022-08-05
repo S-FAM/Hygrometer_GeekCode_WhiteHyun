@@ -5,6 +5,7 @@
 //  Created by 홍승현 on 2022/07/09.
 //
 
+import Combine
 import UIKit
 
 import SnapKit
@@ -14,6 +15,7 @@ final class CityViewController: UIViewController {
     
     // MARK: - Properties
     
+    @Published public var humidity: Int = 0
     public private(set) var id: String = ""
     
     /// 도시 이름을 표시해주는 label 입니다.
@@ -87,16 +89,14 @@ final class CityViewController: UIViewController {
       
         API.weatherInformation(with: requestModel) { [weak self] in
             guard case let .success(result) = $0,
-                  let phraseModel = PhraseModel(humidity: result.main.humidity),
-                  let backgroundImage = UIImage.backgroundImage(with: phraseModel)
+                  let phraseModel = PhraseModel(humidity: result.main.humidity)
             else {
                 return
             }
+            self?.humidity = result.main.humidity
             self?.humidityLabel.text = "\(result.main.humidity)%"
             // 습도별 문구 아무 거나 선택해서 보여줌
             self?.phraseLabel.text = phraseModel.phrase.randomElement()
-            // background Image 설정
-            self?.view.backgroundColor = .init(patternImage: backgroundImage).withAlphaComponent(0.5)
         }
     }
 }
