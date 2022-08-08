@@ -97,7 +97,7 @@ extension ListViewController: UITableViewDataSource {
             
             let alertVC = UIAlertController(title: "", message: "삭제하시겠습니까?", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-            let confirm = UIAlertAction(title: "확인", style: .default) { [weak self] UIAlertAction in
+            let confirm = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
                 UserData.shared.items.remove(at: indexPath.row )
                 self?.weatherListTableView.reloadData()
             }
