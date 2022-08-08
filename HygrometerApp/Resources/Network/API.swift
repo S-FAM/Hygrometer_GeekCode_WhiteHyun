@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Combine
 import Alamofire
 
 public struct API {
@@ -54,6 +54,13 @@ public struct API {
                 completion($0.result)
             }
             .resume()
+    }
+    
+    static func weatherInformationPublisher(with model: WeatherRequest) -> AnyPublisher<WeatherResponse, AFError> {
+        AF
+            .request(ApiType.weather.host, method: .get, parameters: model)
+            .publishDecodable(type: WeatherResponse.self)
+            .value()
     }
 }
 

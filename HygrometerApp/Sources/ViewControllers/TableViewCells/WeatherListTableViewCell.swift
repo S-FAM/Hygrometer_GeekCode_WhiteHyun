@@ -33,8 +33,7 @@ class WeatherListTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
         setDetail()
-        setBackground(isDark: false)
-        setAnimation(weatherAnimationView)
+        setBackground(isDark: true)
     }
     
     required init?(coder: NSCoder) {
@@ -97,16 +96,16 @@ class WeatherListTableViewCell: UITableViewCell {
         ///   - AnimationView: 전환할 애니메이션뷰
         ///   - animationName: JSON파일이름
         /// searchPath는 JSON 파일 위치에 맞게 수정해야한다
-        func setAnimation(_ AnimationView: AnimationView ) {
+    func setAnimation(_ animationView: AnimationView, imageName: String) {
             
-            let animation = Animation.named("weather-storm")//, subdirectory: "Animations")
+            let animation = Animation.named(imageName)//, subdirectory: "Animations")
             if animation == nil { print("nil") }
             
             let imageProvider = BundleImageProvider(bundle : Bundle.main, searchPath:"Resouce/")
-            AnimationView.imageProvider = imageProvider
-            AnimationView.animation = animation
-            AnimationView.play()
-            AnimationView.loopMode = .loop
+            animationView.imageProvider = imageProvider
+            animationView.animation = animation
+            animationView.play()
+            animationView.loopMode = .loop
         }
         
         /**
@@ -136,5 +135,6 @@ class WeatherListTableViewCell: UITableViewCell {
     func configure(with model: ListViewCellViewModel) {
         locationNameLabel.text = model.city
         humidityLabel.text = model.humidity
+        setAnimation(weatherAnimationView, imageName: model.animationName)
     }
 }
