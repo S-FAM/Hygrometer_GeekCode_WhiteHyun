@@ -82,7 +82,7 @@ final class MainViewController: UIViewController {
     private func setupConstraints() {
         
         pageViewController.view.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
         listButton.snp.makeConstraints { make in
@@ -106,7 +106,7 @@ final class MainViewController: UIViewController {
     
     /// ViewController 내에 style을 설정합니다.
     private func setupStyles() {
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
     }
     
