@@ -47,20 +47,19 @@ class WeatherListTableViewCell: UITableViewCell {
 
         humidityLabel.font = UIFont.boldSystemFont(ofSize: 40)
         locationNameLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        weatherAnimationView.backgroundColor = .clear
 
         [ humidityLabel, locationNameLabel ].forEach {
             $0.text = ""
             $0.textColor  = .white
         }
-        weatherAnimationView.backgroundColor = .clear
 
-        
     }
     
     func setLayout() {
         contentView.addSubview(containerView)
         containerView.addSubview(cellImageView)
-        [ locationNameLabel, humidityLabel,weatherAnimationView ].forEach {
+        [ locationNameLabel, humidityLabel, weatherAnimationView ].forEach {
             cellImageView.addSubview($0)
         }
         
@@ -92,6 +91,7 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.trailing.equalTo(cellImageView).inset(20)
         }
     }
+    
         /// 로티애니메이션 전환
         /// - Parameters:
         ///   - AnimationView: 전환할 애니메이션뷰
@@ -105,11 +105,9 @@ class WeatherListTableViewCell: UITableViewCell {
             let imageProvider = BundleImageProvider(bundle : Bundle.main, searchPath:"Resouce/")
             AnimationView.imageProvider = imageProvider
             AnimationView.animation = animation
-            
             AnimationView.play()
             AnimationView.loopMode = .loop
         }
-
         
         /**
          - weatherStorm: 번개, 비
@@ -120,10 +118,10 @@ class WeatherListTableViewCell: UITableViewCell {
          - weatherMist: 안개
          - weatherSnow: 눈
          - weatherStormShowersday: 화창, 번개, 비
-         
          - weatherFoggy: 안개 + 햇빛 - 겹침-
          - weatherFoggyPartlyCloudy: 화창, 구름 - 겹침-
          */
+    
     func setBackground(isDark: Bool) {
         
         let imageName = isDark ? "HygrometerCellDark" : "HygrometerCellLight"
