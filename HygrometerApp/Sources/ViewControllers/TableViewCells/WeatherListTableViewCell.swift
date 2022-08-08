@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Lottie
 
 class WeatherListTableViewCell: UITableViewCell {
     
     let humidityLabel = UILabel()
     let locationNameLabel = UILabel()
+    let weatherAnimationView = AnimationView()
+    
     lazy var cellImageView = UIImageView().then {
         $0.backgroundColor = .clear
         $0.contentMode = .scaleAspectFill
@@ -31,6 +34,7 @@ class WeatherListTableViewCell: UITableViewCell {
         setLayout()
         setDetail()
         setBackground(isDark: false)
+        setAnimation(weatherAnimationView)
     }
     
     required init?(coder: NSCoder) {
@@ -48,14 +52,17 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.text = ""
             $0.textColor  = .white
         }
+        weatherAnimationView.backgroundColor = .clear
+
         
     }
     
     func setLayout() {
         contentView.addSubview(containerView)
         containerView.addSubview(cellImageView)
-        cellImageView.addSubview(locationNameLabel)
-        cellImageView.addSubview(humidityLabel)
+        [ locationNameLabel, humidityLabel,weatherAnimationView ].forEach {
+            cellImageView.addSubview($0)
+        }
         
         containerView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(20)
@@ -78,11 +85,53 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.leading.equalTo(containerView).offset(20)
             $0.width.equalTo(200)
         }
+        
+        weatherAnimationView.snp.makeConstraints {
+            $0.centerY.equalTo(cellImageView)
+            $0.height.width.equalTo(cellImageView.snp.height).multipliedBy(0.7)
+            $0.trailing.equalTo(cellImageView).inset(20)
+        }
     }
+        /// 로티애니메이션 전환
+        /// - Parameters:
+        ///   - AnimationView: 전환할 애니메이션뷰
+        ///   - animationName: JSON파일이름
+        /// searchPath는 JSON 파일 위치에 맞게 수정해야한다
+        func setAnimation(_ AnimationView: AnimationView ) {
+            
+            let animation = Animation.named("weather-storm")//, subdirectory: "Animations")
+            if animation == nil { print("nil") }
+            
+            let imageProvider = BundleImageProvider(bundle : Bundle.main, searchPath:"Resouce/")
+            AnimationView.imageProvider = imageProvider
+            AnimationView.animation = animation
+            
+            AnimationView.play()
+            AnimationView.loopMode = .loop
+        }
+
+        
+        /**
+         - weatherStorm: 번개, 비
+         - weatherWindy: 바람 , 구름
+         - weatherThunder: 번개
+         - weatherSunny: 화창
+         - weatherPartlyShower: 화창, 비
+         - weatherMist: 안개
+         - weatherSnow: 눈
+         - weatherStormShowersday: 화창, 번개, 비
+         
+         - weatherFoggy: 안개 + 햇빛 - 겹침-
+         - weatherFoggyPartlyCloudy: 화창, 구름 - 겹침-
+         */
     func setBackground(isDark: Bool) {
         
         let imageName = isDark ? "HygrometerCellDark" : "HygrometerCellLight"
+        let fontColor = isDark ? UIColor.white : UIColor.black
         cellImageView.image = UIImage(named: imageName)
+        [ locationNameLabel, humidityLabel ].forEach {
+            $0.textColor = fontColor
+        }
         
     }
     
