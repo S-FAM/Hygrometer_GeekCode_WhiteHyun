@@ -102,7 +102,7 @@ extension ListViewController: UITableViewDataSource {
                 self?.weatherListTableView.reloadData()
             }
             [cancel, confirm].forEach { alertVC.addAction($0) }
-            self.present(alertVC, animated: true, completion: nil)
+            self.present(alertVC, animated: true)
         }
     }
 }
