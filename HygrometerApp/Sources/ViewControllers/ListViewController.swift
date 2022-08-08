@@ -101,7 +101,7 @@ extension ListViewController: UITableViewDataSource {
                 UserData.shared.items.remove(at: indexPath.row)
                 self?.weatherListTableView.reloadData()
             }
-            [ cancel, confirm ].forEach { alertVC.addAction($0) }
+            [cancel, confirm].forEach { alertVC.addAction($0) }
             self.present(alertVC, animated: true, completion: nil)
         }
     }
