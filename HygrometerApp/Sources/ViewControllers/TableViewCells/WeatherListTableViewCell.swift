@@ -32,7 +32,7 @@ class WeatherListTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setDetail(){
+    func setDetail() {
         backgroundColor = .clear
         selectionStyle = .none
 
