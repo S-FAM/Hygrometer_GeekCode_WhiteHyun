@@ -10,7 +10,7 @@ import UIKit
 class ListTableEmptyCell: UITableViewCell {
     
     lazy var containerView = UIView().then {
-        $0.backgroundColor = .themeColor
+        $0.backgroundColor = .themeColor.withAlphaComponent(0.5)
         $0.layer.shadowColor = ShadowSet.shadowColor
         $0.layer.shadowOffset = ShadowSet.shadowOffsetStrong
         $0.layer.shadowRadius = ShadowSet.shadowRadius
