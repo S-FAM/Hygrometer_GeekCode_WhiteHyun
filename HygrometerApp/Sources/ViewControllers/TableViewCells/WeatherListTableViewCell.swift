@@ -39,7 +39,7 @@ class WeatherListTableViewCell: UITableViewCell {
         humidityLabel.font = UIFont.boldSystemFont(ofSize: 40)
         locationNameLabel.font = UIFont.boldSystemFont(ofSize: 15)
 
-        [ humidityLabel, locationNameLabel ].forEach {
+        [humidityLabel, locationNameLabel].forEach {
             $0.text = ""
             $0.textColor  = .white
         }
