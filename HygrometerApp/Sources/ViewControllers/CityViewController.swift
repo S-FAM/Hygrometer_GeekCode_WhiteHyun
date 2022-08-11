@@ -33,6 +33,7 @@ final class CityViewController: UIViewController {
         $0.font = .systemFont(ofSize: 96, weight: .thin)
     }
     
+    
     /// 습도에 따른 문구를 표시해주는 label 입니다.
     private lazy var phraseLabel = UILabel().then {
         $0.textAlignment = .center
@@ -40,6 +41,7 @@ final class CityViewController: UIViewController {
         $0.font = .systemFont(ofSize: 20, weight: .semibold)
         $0.adjustsFontSizeToFitWidth = true
     }
+    
     
     /// 도시 label, 습도 label, 어구 label을 가지고 수직으로 보여주는 stackview입니다.
     private lazy var containerView = UIStackView().then {
@@ -86,7 +88,7 @@ final class CityViewController: UIViewController {
             appID: Private.weatherSecretKey,
             lang: "ko"
         )
-      
+        
         API.weatherInformation(with: requestModel) { [weak self] in
             guard case let .success(result) = $0,
                   let phraseModel = PhraseModel(humidity: result.main.humidity)

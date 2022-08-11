@@ -24,7 +24,7 @@ class CityListTableViewCell: UITableViewCell {
     }
     
     
-    func setCityListTabeViewCellLayout(){
+    func setCityListTabeViewCellLayout() {
         
         self.addSubview(containerView)
         containerView.snp.makeConstraints { make in
@@ -40,8 +40,6 @@ class CityListTableViewCell: UITableViewCell {
         containerView.layer.shadowRadius = ShadowSet.shadowRadius
         containerView.layer.shadowOpacity = ShadowSet.shadowOpacityWeak
         containerView.layer.masksToBounds = false
-        
-        
         
         containerView.addSubview(locationNameLabel)
         locationNameLabel.snp.makeConstraints { make in
