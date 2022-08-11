@@ -13,12 +13,11 @@ import SnapKit
 class AddViewController: UIViewController {
     
     // MARK: - Properties
-    
-    var weatherModel: WeatherResponse?
     var searchCityList: [Item] = []
     var searchString = ""
     var keyboardMonitor: KeyboardMonitor?
     var subscriptions = Set<AnyCancellable>()
+    var isTempPage = false
     
     lazy var cityListSearchBar = UISearchBar().then {
         $0.searchTextField.delegate = self
@@ -119,24 +118,7 @@ class AddViewController: UIViewController {
         searchLocation(searchStr: inputStr)
     }
     
-    /// openWeather Main 값에 따라 String 반환
-    /// - Returns: Lottie Weater
-    func getWeatherIconName(_ data: WeatherResponse) -> String {
-        guard let data = weatherModel else { return "" }
-        
-        switch data.weather[0].main {
-        case "Clouds":
-            return "weatherWindy"
-        case "Clear":
-            return "weatherSunny"
-        case "Rain":
-            return "weatherPartlyShower"
-        case "Atmospher":
-            return "weatherFoggy"
-        default:
-            return "weatherSnow"
-        }
-    }
+
 }
 
 // MARK: - Layouts
@@ -227,6 +209,12 @@ extension AddViewController: UITableViewDelegate {
         
         let model = UserDataModel(id: id, city: city, point: point)
         UserData.shared.items.append(model)
+        
+        if isTempPage {
+            self.isTempPage = false
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "resetAnimation"), object: nil, userInfo: nil)
+        }
+        
         navigationController?.popViewController(animated: true)
     }
 }
@@ -272,3 +260,13 @@ extension AddViewController {
     
 
 }
+
+
+//extension AddViewController : animationProtocol {
+////    func resetAnimation() {
+////        <#code#>
+////    }
+////
+//
+//
+//}

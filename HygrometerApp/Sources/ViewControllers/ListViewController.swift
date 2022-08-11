@@ -6,12 +6,14 @@
 //
 import SnapKit
 import UIKit
+import Combine
 
 class ListViewController: UIViewController {
     
     //MARK: - Properties
-    
+    var weatherModel: WeatherResponse?
     var viewModel = ListViewModel()
+    var subscriptions = Set<AnyCancellable>()
 
     lazy var weatherListTableView = UITableView().then {
         $0.backgroundColor = .clear
@@ -26,11 +28,32 @@ class ListViewController: UIViewController {
         self.view.backgroundColor = .systemCyan
         setupLayouts()
         setupConstraints()
-        viewModel.setup() { [weak self] in
-            self?.weatherListTableView.reloadData()
-        }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.setup().sink { [weak self] _ in
+            self?.weatherListTableView.reloadData()
+        } receiveValue: { [weak self] value in
+            self?.viewModel.models.removeAll()
+            
+           let value =  value.enumerated().map {
+                ListViewCellViewModel(city: UserData.shared.items[$0].city, humidity: "\($1.main.humidity)%")
+            }
+            
+            self?.viewModel.models.append(contentsOf: value)
+            
+        }.store(in: &subscriptions)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        subscriptions.map { subscription in
+            subscription.cancel()
+        }
+    }
        
     // MARK: - Configuration
     
@@ -43,6 +66,27 @@ class ListViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
+    
+        
+    /// openWeather Main 값에 따라 String 반환
+    /// - Returns: Lottie Weater
+    func getWeatherIconName(_ data: WeatherResponse) -> String {
+        guard let data = weatherModel else { return "" }
+        
+        switch data.weather[0].main {
+        case "Clouds":
+            return "weatherWindy"
+        case "Clear":
+            return "weatherSunny"
+        case "Rain":
+            return "weatherPartlyShower"
+        case "Atmospher":
+            return "weatherFoggy"
+        default:
+            return "weatherSnow"
+        }
+    }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -50,59 +94,73 @@ extension ListViewController: UITableViewDelegate {
  
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserData.shared.items.count + 1
+        
+        let count = section == 0 ? UserData.shared.items.count : 1
+        return count
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 170
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 2
     }
 }
 
 // MARK: - UITableViewDataSource
 extension ListViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let isLastCell = indexPath.row == viewModel.models.count
-        
-        switch isLastCell {
+                
+        switch indexPath.section {
             
-        case true:
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableEmptyCell", for: indexPath) as! ListTableEmptyCell
-            return cell
-            
-        case false:
+        case 0:
             
             let model = viewModel.models[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherListTableViewCell", for: indexPath) as! WeatherListTableViewCell
             cell.configure(with: model)
-            
-            return cell
 
+            return cell
+            
+        case 1:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableEmptyCell", for: indexPath) as! ListTableEmptyCell
+            return cell
+            
+        default:
+            fatalError()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let isLastCell = indexPath.row == UserData.shared.items.count
-        
-        switch isLastCell {
+        switch indexPath.section {
             
-        case true:
-            
-            let vc = AddViewController()
-            navigationController?.pushViewController(vc, animated: true)
-            
-        case false:
+        case 0:
             
             let alertVC = UIAlertController(title: "", message: "삭제하시겠습니까?", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-            let confirm = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            let confirm = UIAlertAction(title: "확인", style: .default) { [weak self] UIAlertAction in
                 UserData.shared.items.remove(at: indexPath.row)
+                self?.viewModel.models.remove(at: indexPath.row)
                 self?.weatherListTableView.reloadData()
             }
-            [cancel, confirm].forEach { alertVC.addAction($0) }
-            self.present(alertVC, animated: true)
+            
+            [ cancel, confirm ].forEach { alertVC.addAction($0) }
+            self.present(alertVC, animated: true, completion: nil)
+            
+        case 1:
+            
+            let addVc = AddViewController()
+            addVc.isTempPage = true
+            navigationController?.pushViewController(addVc, animated: true)
+            
+        default:
+            fatalError()
         }
     }
 }

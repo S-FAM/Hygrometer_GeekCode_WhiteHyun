@@ -34,13 +34,17 @@ class WeatherListTableViewCell: UITableViewCell {
         setLayout()
         setDetail()
         setBackground(isDark: true)
+        setAnimation(weatherAnimationView, imageName: "weather-storm")
+        NotificationCenter.default.addObserver(self, selector: #selector(resetAnimationNoti(_:)), name: NSNotification.Name(rawValue: "resetAnimation"), object: nil)
+        
+
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setDetail() {
+    func setDetail(){
         backgroundColor = .clear
         selectionStyle = .none
 
@@ -48,7 +52,7 @@ class WeatherListTableViewCell: UITableViewCell {
         locationNameLabel.font = UIFont.boldSystemFont(ofSize: 15)
         weatherAnimationView.backgroundColor = .clear
 
-        [humidityLabel, locationNameLabel].forEach {
+        [ humidityLabel, locationNameLabel ].forEach {
             $0.text = ""
             $0.textColor  = .white
         }
@@ -85,10 +89,15 @@ class WeatherListTableViewCell: UITableViewCell {
         }
         
         weatherAnimationView.snp.makeConstraints {
-            $0.centerY.equalTo(cellImageView)
+            $0.centerY.equalTo(cellImageView).offset(-30)
             $0.height.width.equalTo(cellImageView.snp.height).multipliedBy(0.7)
-            $0.trailing.equalTo(cellImageView).inset(20)
+            $0.trailing.equalTo(cellImageView).inset(30)
         }
+    }
+        
+    @objc func resetAnimationNoti (_ notification: NSNotification) {
+        print("작동")
+        weatherAnimationView.play()
     }
     
         /// 로티애니메이션 전환
@@ -135,6 +144,5 @@ class WeatherListTableViewCell: UITableViewCell {
     func configure(with model: ListViewCellViewModel) {
         locationNameLabel.text = model.city
         humidityLabel.text = model.humidity
-        setAnimation(weatherAnimationView, imageName: model.animationName)
     }
 }
