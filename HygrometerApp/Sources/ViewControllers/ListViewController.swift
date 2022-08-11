@@ -14,7 +14,7 @@ class ListViewController: UIViewController {
     var weatherModel: WeatherResponse?
     var viewModel = ListViewModel()
     var subscriptions = Set<AnyCancellable>()
-
+    
     lazy var weatherListTableView = UITableView().then {
         $0.backgroundColor = .clear
         $0.dataSource = self
@@ -22,7 +22,7 @@ class ListViewController: UIViewController {
         $0.register(WeatherListTableViewCell.self, forCellReuseIdentifier: "WeatherListTableViewCell")
         $0.register(ListTableEmptyCell.self, forCellReuseIdentifier: "ListTableEmptyCell")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemCyan
@@ -37,9 +37,9 @@ class ListViewController: UIViewController {
             self?.weatherListTableView.reloadData()
         } receiveValue: { [weak self] value in
             self?.viewModel.models.removeAll()
-
-           let value =  value.enumerated().map {
-               ListViewCellViewModel(city: UserData.shared.items[$0].city, humidity: "\($1.main.humidity)%", main: $1.weather[0].main)
+            
+            let value =  value.enumerated().map {
+                ListViewCellViewModel(city: UserData.shared.items[$0].city, humidity: "\($1.main.humidity)%", main: $1.weather[0].main)
             }
             print("value:", value)
             
@@ -55,7 +55,7 @@ class ListViewController: UIViewController {
             subscription.cancel()
         }
     }
-       
+    
     // MARK: - Configuration
     
     private func setupLayouts() {
@@ -68,7 +68,7 @@ class ListViewController: UIViewController {
         }
     }
     
-        
+    
     /// openWeather Main 값에 따라 String 반환
     /// - Returns: Lottie Weater
     func getWeatherIconName(_ data: WeatherResponse) -> String {
@@ -92,7 +92,7 @@ class ListViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 extension ListViewController: UITableViewDelegate {
- 
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -116,7 +116,7 @@ extension ListViewController: UITableViewDelegate {
 extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                
+        
         switch indexPath.section {
             
         case 0:
@@ -124,7 +124,7 @@ extension ListViewController: UITableViewDataSource {
             let model = viewModel.models[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherListTableViewCell", for: indexPath) as! WeatherListTableViewCell
             cell.configure(with: model)
-
+            
             return cell
             
         case 1:
