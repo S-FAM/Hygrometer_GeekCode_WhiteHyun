@@ -36,7 +36,7 @@ class WeatherListTableViewCell: UITableViewCell {
         setBackground(isDark: true)
         NotificationCenter.default.addObserver(self, selector: #selector(resetAnimationNoti(_:)), name: NSNotification.Name(rawValue: "resetAnimation"), object: nil)
         
-
+        
     }
     
     required init?(coder: NSCoder) {
@@ -46,22 +46,22 @@ class WeatherListTableViewCell: UITableViewCell {
     func setDetail() {
         backgroundColor = .clear
         selectionStyle = .none
-
+        
         humidityLabel.font = UIFont.boldSystemFont(ofSize: 40)
         locationNameLabel.font = UIFont.boldSystemFont(ofSize: 15)
         weatherAnimationView.backgroundColor = .clear
-
-        [ humidityLabel, locationNameLabel ].forEach {
+        
+        [humidityLabel, locationNameLabel].forEach {
             $0.text = ""
             $0.textColor  = .white
         }
-
+        
     }
     
     func setLayout() {
         contentView.addSubview(containerView)
         containerView.addSubview(cellImageView)
-        [ locationNameLabel, humidityLabel, weatherAnimationView ].forEach {
+        [locationNameLabel, humidityLabel, weatherAnimationView].forEach {
             cellImageView.addSubview($0)
         }
         
@@ -93,7 +93,7 @@ class WeatherListTableViewCell: UITableViewCell {
             $0.trailing.equalTo(cellImageView).inset(30)
         }
     }
-        
+    
     @objc func resetAnimationNoti (_ notification: NSNotification) {
         weatherAnimationView.play()
     }
@@ -103,7 +103,7 @@ class WeatherListTableViewCell: UITableViewCell {
         let imageName = isDark ? "HygrometerCellDark" : "HygrometerCellLight"
         let fontColor = isDark ? UIColor.white : UIColor.black
         cellImageView.image = UIImage(named: imageName)
-        [ locationNameLabel, humidityLabel ].forEach {
+        [locationNameLabel, humidityLabel].forEach {
             $0.textColor = fontColor
         }
         
@@ -159,7 +159,7 @@ class WeatherListTableViewCell: UITableViewCell {
     ///   - AnimationView: 전환할 애니메이션뷰
     ///   - animationName: JSON파일이름
     /// searchPath는 JSON 파일 위치에 맞게 수정해야한다
-func setAnimation(_ animationView: AnimationView, imageName: String) {
+    func setAnimation(_ animationView: AnimationView, imageName: String) {
         
         let animation = Animation.named(imageName)//, subdirectory: "Animations")
         if animation == nil { print("nil") }
