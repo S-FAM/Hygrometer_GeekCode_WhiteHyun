@@ -35,7 +35,12 @@
 		BA3DBC5B2879C349005BA6F0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC5A2879C349005BA6F0 /* SnapKit */; };
 		BA3DBC5E2879C36F005BA6F0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC5D2879C36F005BA6F0 /* Alamofire */; };
 		BA5FC6472887C9CF00A69902 /* GpsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5FC6462887C9CF00A69902 /* GpsResponse.swift */; };
-		BA7AB51428A5411A006FEEDA /* LottieWeather in Resources */ = {isa = PBXBuildFile; fileRef = BA7AB51328A5411A006FEEDA /* LottieWeather */; };
+		BA7AB51C28A54537006FEEDA /* weather-snow.json in Resources */ = {isa = PBXBuildFile; fileRef = BA7AB51628A54537006FEEDA /* weather-snow.json */; };
+		BA7AB51D28A54537006FEEDA /* weather-partly-shower.json in Resources */ = {isa = PBXBuildFile; fileRef = BA7AB51728A54537006FEEDA /* weather-partly-shower.json */; };
+		BA7AB51E28A54537006FEEDA /* weather-windy.json in Resources */ = {isa = PBXBuildFile; fileRef = BA7AB51828A54537006FEEDA /* weather-windy.json */; };
+		BA7AB51F28A54537006FEEDA /* weather-sunny.json in Resources */ = {isa = PBXBuildFile; fileRef = BA7AB51928A54537006FEEDA /* weather-sunny.json */; };
+		BA7AB52028A54537006FEEDA /* weather-storm.json in Resources */ = {isa = PBXBuildFile; fileRef = BA7AB51A28A54537006FEEDA /* weather-storm.json */; };
+		BA7AB52128A54537006FEEDA /* weather-mist.json in Resources */ = {isa = PBXBuildFile; fileRef = BA7AB51B28A54537006FEEDA /* weather-mist.json */; };
 		BAA0BE58289258B50044756B /* PhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE57289258B50044756B /* PhraseModel.swift */; };
 		BAA0BE5B28926D400044756B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE5A28926D400044756B /* LocationManager.swift */; };
 		BAA0BE5D28929DF80044756B /* CoordinateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE5C28929DF80044756B /* CoordinateRequest.swift */; };
@@ -70,7 +75,12 @@
 		BA3DBC522879B562005BA6F0 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		BA3DBC542879BE14005BA6F0 /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		BA5FC6462887C9CF00A69902 /* GpsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsResponse.swift; sourceTree = "<group>"; };
-		BA7AB51328A5411A006FEEDA /* LottieWeather */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LottieWeather; sourceTree = "<group>"; };
+		BA7AB51628A54537006FEEDA /* weather-snow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "weather-snow.json"; sourceTree = "<group>"; };
+		BA7AB51728A54537006FEEDA /* weather-partly-shower.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "weather-partly-shower.json"; sourceTree = "<group>"; };
+		BA7AB51828A54537006FEEDA /* weather-windy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "weather-windy.json"; sourceTree = "<group>"; };
+		BA7AB51928A54537006FEEDA /* weather-sunny.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "weather-sunny.json"; sourceTree = "<group>"; };
+		BA7AB51A28A54537006FEEDA /* weather-storm.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "weather-storm.json"; sourceTree = "<group>"; };
+		BA7AB51B28A54537006FEEDA /* weather-mist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "weather-mist.json"; sourceTree = "<group>"; };
 		BAA0BE57289258B50044756B /* PhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseModel.swift; sourceTree = "<group>"; };
 		BAA0BE5A28926D400044756B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BAA0BE5C28929DF80044756B /* CoordinateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateRequest.swift; sourceTree = "<group>"; };
@@ -193,8 +203,8 @@
 		BA3DBC5F2879C392005BA6F0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BA7AB51528A54516006FEEDA /* LottieWeather */,
 				BA3DBC432879B439005BA6F0 /* Assets.xcassets */,
-				BA7AB51328A5411A006FEEDA /* LottieWeather */,
 				9C15D8F1287C5D4800486F85 /* Network */,
 			);
 			path = Resources;
@@ -209,6 +219,19 @@
 				BABD93F528A5366B00877AFA /* UIImage+backgroundImage.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BA7AB51528A54516006FEEDA /* LottieWeather */ = {
+			isa = PBXGroup;
+			children = (
+				BA7AB51B28A54537006FEEDA /* weather-mist.json */,
+				BA7AB51728A54537006FEEDA /* weather-partly-shower.json */,
+				BA7AB51628A54537006FEEDA /* weather-snow.json */,
+				BA7AB51A28A54537006FEEDA /* weather-storm.json */,
+				BA7AB51928A54537006FEEDA /* weather-sunny.json */,
+				BA7AB51828A54537006FEEDA /* weather-windy.json */,
+			);
+			path = LottieWeather;
 			sourceTree = "<group>";
 		};
 		BAA0BE5928926D320044756B /* Managers */ = {
@@ -289,8 +312,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA7AB52028A54537006FEEDA /* weather-storm.json in Resources */,
+				BA7AB51F28A54537006FEEDA /* weather-sunny.json in Resources */,
+				BA7AB51D28A54537006FEEDA /* weather-partly-shower.json in Resources */,
+				BA7AB52128A54537006FEEDA /* weather-mist.json in Resources */,
 				BA3DBC472879B439005BA6F0 /* LaunchScreen.storyboard in Resources */,
-				BA7AB51428A5411A006FEEDA /* LottieWeather in Resources */,
+				BA7AB51E28A54537006FEEDA /* weather-windy.json in Resources */,
+				BA7AB51C28A54537006FEEDA /* weather-snow.json in Resources */,
 				BA3DBC442879B439005BA6F0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
