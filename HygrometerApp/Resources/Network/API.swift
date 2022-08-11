@@ -56,6 +56,13 @@ public struct API {
             }
             .resume()
     }
+    
+    static func weatherInformationPublisher(with model: WeatherRequest) -> AnyPublisher<WeatherResponse, AFError> {
+        AF
+            .request(ApiType.weather.host, method: .get, parameters: model)
+            .publishDecodable(type: WeatherResponse.self)
+            .value()
+    }
 }
 
 enum ApiType {
