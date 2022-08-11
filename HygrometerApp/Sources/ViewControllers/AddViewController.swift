@@ -79,7 +79,7 @@ class AddViewController: UIViewController {
     
     /// 검색어를 통해 GPS검색하는 함수
     /// - Parameter searchStr: 서치바의 검색어
-    func searchLocation(searchStr: String) {
+    private func searchLocation(searchStr: String) {
         
         let model = GpsRequest(
             key: Private.gpsSecretKey,
@@ -143,8 +143,8 @@ class AddViewController: UIViewController {
 
 extension AddViewController {
     
-    func setLayout() {
-        self.view.backgroundColor = .themeColor.withAlphaComponent(0.7)
+    private func setLayout() {
+        self.view.backgroundColor = .black
         self.view.addSubview(cityListSearchBar)
         self.view.addSubview(emptyResultView)
         self.view.addSubview(cityListTableView)
@@ -182,7 +182,7 @@ extension AddViewController {
         }
     }
     
-    func setStyles() {
+    private func setStyles() {
         
         guard let textfield = cityListSearchBar.value(forKey: "searchField") as? UITextField else { return }
         
@@ -227,7 +227,6 @@ extension AddViewController: UITableViewDelegate {
         
         let model = UserDataModel(id: id, city: city, point: point)
         UserData.shared.items.append(model)
-        
         navigationController?.popViewController(animated: true)
     }
 }
@@ -260,13 +259,14 @@ extension AddViewController: UITableViewDataSource {
 
 //MARK: - KeyboardMonitor
 extension AddViewController {
-    /// 키보드 이벤트처리
-    private func observingKeyboardEvent() { //키보드 height를 받아서 처리
-        keyboardMonitor?.$keyboardHeight.sink { [weak self] height in
-            
-            //키보드의 높이가 변할때 tempView를 띄워서 상단 터치시 dismiss처리
-            self?.tempView.isHidden = height > 0 ? false : true
- 
+    
+    ///키보드 height를 받아서 처리
+    private func observingKeyboardEvent() {
+        keyboardMonitor?.$status.sink { [weak self] mode in
+
+        //키보드의 높이가 변할때 tempView를 띄워서 상단 터치시 dismiss처리
+        self?.tempView.isHidden = mode == KeyboardMonitor.Status.show ? false : true
+
         }.store(in: &subscriptions)
     }
     

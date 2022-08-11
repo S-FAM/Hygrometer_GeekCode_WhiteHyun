@@ -9,11 +9,69 @@ import UIKit
 
 class WeatherListTableViewCell: UITableViewCell {
     
+    let humidityLabel = UILabel()
+    let locationNameLabel = UILabel()
+
+    lazy var containerView = UIView().then {
+        $0.backgroundColor = .themeColor
+        $0.layer.cornerRadius = 20
+        $0.layer.shadowColor = ShadowSet.shadowColor
+        $0.layer.shadowOffset = ShadowSet.shadowOffsetStrong
+        $0.layer.shadowRadius = ShadowSet.shadowRadius
+        $0.layer.shadowOpacity = ShadowSet.shadowOpacityWeak
+        $0.layer.masksToBounds = false
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setLayout()
+        setDetail()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setDetail() {
+        backgroundColor = .clear
+        selectionStyle = .none
+
+        humidityLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        locationNameLabel.font = UIFont.boldSystemFont(ofSize: 15)
+
+        [humidityLabel, locationNameLabel].forEach {
+            $0.text = ""
+            $0.textColor  = .white
+        }
+        
+    }
+    
+    func setLayout() {
+        contentView.addSubview(containerView)
+        containerView.addSubview(locationNameLabel)
+        containerView.addSubview(humidityLabel)
+        
+        containerView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.centerY.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.85)
+        }
+        
+        humidityLabel.snp.makeConstraints {
+            $0.top.equalTo(containerView).offset(30)
+            $0.leading.equalTo(containerView).offset(20)
+            $0.width.equalTo(containerView).multipliedBy(0.4)
+        }
+        
+        locationNameLabel.snp.makeConstraints {
+            $0.top.equalTo(humidityLabel.snp.bottom).offset(20)
+            $0.leading.equalTo(containerView).offset(20)
+            $0.width.equalTo(200)
+        }
+    }
+    
+    func configure(with model: ListViewCellViewModel) {
+        locationNameLabel.text = model.city
+        humidityLabel.text = model.humidity
     }
 }

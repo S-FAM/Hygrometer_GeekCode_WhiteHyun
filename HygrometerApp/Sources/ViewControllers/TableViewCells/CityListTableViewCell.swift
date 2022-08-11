@@ -41,8 +41,6 @@ class CityListTableViewCell: UITableViewCell {
         containerView.layer.shadowOpacity = ShadowSet.shadowOpacityWeak
         containerView.layer.masksToBounds = false
         
-        
-        
         containerView.addSubview(locationNameLabel)
         locationNameLabel.snp.makeConstraints { make in
             make.centerY.equalTo(self)
