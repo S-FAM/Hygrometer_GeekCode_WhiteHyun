@@ -11,4 +11,5 @@ import Foundation
 struct ListViewCellViewModel {
     let city: String
     let humidity: String
+    let main: String
 }

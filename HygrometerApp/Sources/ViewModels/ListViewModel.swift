@@ -16,7 +16,7 @@ class ListViewModel {
     init() {
         models = []
         for _ in 0..<UserData.shared.items.count {
-            models.append(ListViewCellViewModel(city: "", humidity: ""))
+            models.append(ListViewCellViewModel(city: "", humidity: "", main: ""))
         }
     }
     

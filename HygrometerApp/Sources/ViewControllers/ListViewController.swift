@@ -37,10 +37,11 @@ class ListViewController: UIViewController {
             self?.weatherListTableView.reloadData()
         } receiveValue: { [weak self] value in
             self?.viewModel.models.removeAll()
-            
+
            let value =  value.enumerated().map {
-                ListViewCellViewModel(city: UserData.shared.items[$0].city, humidity: "\($1.main.humidity)%")
+               ListViewCellViewModel(city: UserData.shared.items[$0].city, humidity: "\($1.main.humidity)%", main: $1.weather[0].main)
             }
+            print("value:", value)
             
             self?.viewModel.models.append(contentsOf: value)
             

@@ -23,6 +23,7 @@
 		9CE9FE3728A152BB00D5A1F9 /* weather-sunny.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9FE3328A152BA00D5A1F9 /* weather-sunny.json */; };
 		9CE9FE3828A152BB00D5A1F9 /* weather-windy.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9FE3428A152BA00D5A1F9 /* weather-windy.json */; };
 		9CE9FE3928A152BB00D5A1F9 /* weather-mist.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9FE3528A152BB00D5A1F9 /* weather-mist.json */; };
+		9CE9FE3B28A522E500D5A1F9 /* weather-partly-shower.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9FE3A28A522E500D5A1F9 /* weather-partly-shower.json */; };
 		BA04205E288932F7004D8834 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA04205D288932F7004D8834 /* UIColor.swift */; };
 		BA0420602889331F004D8834 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA04205F2889331F004D8834 /* UIView.swift */; };
 		BA0DCBBF2887E237003C059A /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DCBBE2887E237003C059A /* WeatherRequest.swift */; };
@@ -62,6 +63,7 @@
 		9CE9FE3328A152BA00D5A1F9 /* weather-sunny.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "weather-sunny.json"; sourceTree = "<group>"; };
 		9CE9FE3428A152BA00D5A1F9 /* weather-windy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "weather-windy.json"; sourceTree = "<group>"; };
 		9CE9FE3528A152BB00D5A1F9 /* weather-mist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "weather-mist.json"; sourceTree = "<group>"; };
+		9CE9FE3A28A522E500D5A1F9 /* weather-partly-shower.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "weather-partly-shower.json"; sourceTree = "<group>"; };
 		BA04205D288932F7004D8834 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BA04205F2889331F004D8834 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		BA0DCBBE2887E237003C059A /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				9CE9FE2F28A133A400D5A1F9 /* weather-storm.json */,
 				9CE9FE3528A152BB00D5A1F9 /* weather-mist.json */,
+				9CE9FE3A28A522E500D5A1F9 /* weather-partly-shower.json */,
 				9CE9FE3228A152BA00D5A1F9 /* weather-snow.json */,
 				9CE9FE3328A152BA00D5A1F9 /* weather-sunny.json */,
 				9CE9FE3428A152BA00D5A1F9 /* weather-windy.json */,
@@ -306,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CE9FE3B28A522E500D5A1F9 /* weather-partly-shower.json in Resources */,
 				BA3DBC472879B439005BA6F0 /* LaunchScreen.storyboard in Resources */,
 				9CE9FE3628A152BB00D5A1F9 /* weather-snow.json in Resources */,
 				9CE9FE3928A152BB00D5A1F9 /* weather-mist.json in Resources */,
