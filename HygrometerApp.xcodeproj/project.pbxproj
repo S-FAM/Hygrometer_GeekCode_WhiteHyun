@@ -35,6 +35,7 @@
 		BA3DBC5B2879C349005BA6F0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC5A2879C349005BA6F0 /* SnapKit */; };
 		BA3DBC5E2879C36F005BA6F0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BA3DBC5D2879C36F005BA6F0 /* Alamofire */; };
 		BA5FC6472887C9CF00A69902 /* GpsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5FC6462887C9CF00A69902 /* GpsResponse.swift */; };
+		BA7AB51428A5411A006FEEDA /* LottieWeather in Resources */ = {isa = PBXBuildFile; fileRef = BA7AB51328A5411A006FEEDA /* LottieWeather */; };
 		BAA0BE58289258B50044756B /* PhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE57289258B50044756B /* PhraseModel.swift */; };
 		BAA0BE5B28926D400044756B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE5A28926D400044756B /* LocationManager.swift */; };
 		BAA0BE5D28929DF80044756B /* CoordinateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0BE5C28929DF80044756B /* CoordinateRequest.swift */; };
@@ -69,6 +70,7 @@
 		BA3DBC522879B562005BA6F0 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		BA3DBC542879BE14005BA6F0 /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		BA5FC6462887C9CF00A69902 /* GpsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsResponse.swift; sourceTree = "<group>"; };
+		BA7AB51328A5411A006FEEDA /* LottieWeather */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LottieWeather; sourceTree = "<group>"; };
 		BAA0BE57289258B50044756B /* PhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseModel.swift; sourceTree = "<group>"; };
 		BAA0BE5A28926D400044756B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BAA0BE5C28929DF80044756B /* CoordinateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateRequest.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				BA3DBC432879B439005BA6F0 /* Assets.xcassets */,
+				BA7AB51328A5411A006FEEDA /* LottieWeather */,
 				9C15D8F1287C5D4800486F85 /* Network */,
 			);
 			path = Resources;
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA3DBC472879B439005BA6F0 /* LaunchScreen.storyboard in Resources */,
+				BA7AB51428A5411A006FEEDA /* LottieWeather in Resources */,
 				BA3DBC442879B439005BA6F0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
