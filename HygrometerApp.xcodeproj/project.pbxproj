@@ -17,6 +17,7 @@
 		9CE7E8BB288CF9AD00108CBD /* KeyboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE7E8BA288CF9AD00108CBD /* KeyboardMonitor.swift */; };
 		9CE9FE21289ABC1500D5A1F9 /* WeatherListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9FE20289ABC1500D5A1F9 /* WeatherListTableViewCell.swift */; };
 		9CE9FE27289BFC3900D5A1F9 /* ListTableEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9FE26289BFC3900D5A1F9 /* ListTableEmptyCell.swift */; };
+		9CE9FE3E28A53D8D00D5A1F9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 9CE9FE3D28A53D8D00D5A1F9 /* Lottie */; };
 		BA04205E288932F7004D8834 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA04205D288932F7004D8834 /* UIColor.swift */; };
 		BA0420602889331F004D8834 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA04205F2889331F004D8834 /* UIView.swift */; };
 		BA0DCBBF2887E237003C059A /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DCBBE2887E237003C059A /* WeatherRequest.swift */; };
@@ -83,6 +84,7 @@
 				BA3DBC5E2879C36F005BA6F0 /* Alamofire in Frameworks */,
 				BA3DBC582879C2C4005BA6F0 /* Then in Frameworks */,
 				BA3DBC5B2879C349005BA6F0 /* SnapKit in Frameworks */,
+				9CE9FE3E28A53D8D00D5A1F9 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +236,7 @@
 				BA3DBC572879C2C4005BA6F0 /* Then */,
 				BA3DBC5A2879C349005BA6F0 /* SnapKit */,
 				BA3DBC5D2879C36F005BA6F0 /* Alamofire */,
+				9CE9FE3D28A53D8D00D5A1F9 /* Lottie */,
 			);
 			productName = HygrometerApp;
 			productReference = BA3DBC372879B438005BA6F0 /* HygrometerApp.app */;
@@ -267,6 +270,7 @@
 				BA3DBC562879C2C4005BA6F0 /* XCRemoteSwiftPackageReference "Then" */,
 				BA3DBC592879C349005BA6F0 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				BA3DBC5C2879C36F005BA6F0 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				9CE9FE3C28A53D8D00D5A1F9 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = BA3DBC382879B438005BA6F0 /* Products */;
 			projectDirPath = "";
@@ -534,6 +538,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9CE9FE3C28A53D8D00D5A1F9 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		BA3DBC562879C2C4005BA6F0 /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then.git";
@@ -561,6 +573,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9CE9FE3D28A53D8D00D5A1F9 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CE9FE3C28A53D8D00D5A1F9 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		BA3DBC572879C2C4005BA6F0 /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BA3DBC562879C2C4005BA6F0 /* XCRemoteSwiftPackageReference "Then" */;
