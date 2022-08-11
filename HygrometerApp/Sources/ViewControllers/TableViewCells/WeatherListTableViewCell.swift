@@ -40,7 +40,7 @@ class WeatherListTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setDetail(){
+    func setDetail() {
         backgroundColor = .clear
         selectionStyle = .none
 
@@ -48,7 +48,7 @@ class WeatherListTableViewCell: UITableViewCell {
         locationNameLabel.font = UIFont.boldSystemFont(ofSize: 15)
         weatherAnimationView.backgroundColor = .clear
 
-        [ humidityLabel, locationNameLabel ].forEach {
+        [humidityLabel, locationNameLabel].forEach {
             $0.text = ""
             $0.textColor  = .white
         }

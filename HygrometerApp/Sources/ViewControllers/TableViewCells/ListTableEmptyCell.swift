@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+import Then
 class ListTableEmptyCell: UITableViewCell {
     
     lazy var containerView = UIView().then {
