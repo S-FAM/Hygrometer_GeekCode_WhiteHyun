@@ -9,10 +9,11 @@ import UIKit
 
 import SnapKit
 import Then
+
 class ListTableEmptyCell: UITableViewCell {
     
     lazy var containerView = UIView().then {
-        $0.backgroundColor = .themeColor
+        $0.backgroundColor = .themeColor.withAlphaComponent(0.5)
         $0.layer.shadowColor = ShadowSet.shadowColor
         $0.layer.shadowOffset = ShadowSet.shadowOffsetStrong
         $0.layer.shadowRadius = ShadowSet.shadowRadius
@@ -29,10 +30,10 @@ class ListTableEmptyCell: UITableViewCell {
         $0.contentMode = .scaleAspectFit
         $0.layer.cornerRadius = 20
     }
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        
         backgroundColor = .clear
         selectionStyle = .none
         setLayout()
