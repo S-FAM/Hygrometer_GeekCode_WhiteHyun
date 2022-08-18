@@ -18,15 +18,17 @@ class AddViewController: UIViewController {
     var keyboardMonitor: KeyboardMonitor?
     var subscriptions = Set<AnyCancellable>()
     var isTempPage = false
+    var backgroundImgView = UIImageView()
     
     lazy var cityListSearchBar = UISearchBar().then {
         $0.searchTextField.delegate = self
-        $0.placeholder = "Search for city"
+//        $0.placeholder = "Search for city"
+        $0.searchTextField.tintColor = .black
         $0.searchBarStyle = .minimal
-        $0.tintColor = .systemYellow
         $0.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
         $0.setImage(UIImage(named: "icSearchNonW"), for: .search, state: .normal)
     }
+    
     
     lazy var cityListTableView = UITableView().then {
         $0.backgroundColor = .clear
@@ -39,7 +41,7 @@ class AddViewController: UIViewController {
     // 테이블뷰 조회결과가 없는 경우 보여짐
     let emptyResultLabel = UILabel().then {
         $0.text = "검색 결과가 없습니다"
-        $0.textColor = .lightGray
+        $0.textColor = .black
         $0.textAlignment = .center
     }
     
@@ -126,14 +128,18 @@ class AddViewController: UIViewController {
 extension AddViewController {
     
     private func setLayout() {
-        self.view.backgroundColor = .black
+        self.view.backgroundColor = .clear
+        self.view.addSubview(backgroundImgView)
         self.view.addSubview(cityListSearchBar)
         self.view.addSubview(emptyResultView)
         self.view.addSubview(cityListTableView)
         self.view.addSubview(tempView)
         emptyResultView.addSubview(emptyResultLabel)
         
-        
+        backgroundImgView.snp.makeConstraints { make in
+            make.edges.equalTo(self.view)
+        }
+
         cityListSearchBar.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide)
             make.width.equalTo(self.view).multipliedBy(0.95)
@@ -166,15 +172,18 @@ extension AddViewController {
     
     private func setStyles() {
         
+        backgroundImgView.image = UIImage(named: "Day")
+        
         guard let textfield = cityListSearchBar.value(forKey: "searchField") as? UITextField else { return }
         
-        textfield.backgroundColor = .themeColor
-        textfield.textColor = .white
+        textfield.backgroundColor = .themeColor.withAlphaComponent(0.4)
+        textfield.textColor = .black
+        textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "Search for city", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
         
         //왼쪽 아이콘 이미지넣기
         if let leftView = textfield.leftView as? UIImageView {
             leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
-            leftView.tintColor = .lightGray
+            leftView.tintColor = .black
         }
         
         //오른쪽 x버튼 이미지넣기
