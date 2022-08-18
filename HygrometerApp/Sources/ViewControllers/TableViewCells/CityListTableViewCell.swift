@@ -32,7 +32,7 @@ class CityListTableViewCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.85)
         }
-        containerView.backgroundColor = .themeColor
+        containerView.backgroundColor = .themeColor.withAlphaComponent(0.4)
         containerView.layer.cornerRadius = 20
         //그림자
         containerView.layer.shadowColor = ShadowSet.shadowColor
@@ -48,7 +48,7 @@ class CityListTableViewCell: UITableViewCell {
             make.leading.equalTo(self).offset(self.frame.width * 0.07)
         }
         locationNameLabel.text = "수원시"
-        locationNameLabel.textColor = UIColor.lightGray
+        locationNameLabel.textColor = UIColor.white
         locationNameLabel.font = UIFont.boldSystemFont(ofSize: 15)
         locationNameLabel.textAlignment = .left
         locationNameLabel.adjustsFontSizeToFitWidth = true
@@ -61,7 +61,7 @@ class CityListTableViewCell: UITableViewCell {
             make.height.equalTo(self).multipliedBy(0.25)
         }
         nationNameLabel.text = "대한민국"
-        nationNameLabel.textColor = UIColor.black
+        nationNameLabel.textColor = UIColor.white
         nationNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
         nationNameLabel.textAlignment = .left
         nationNameLabel.adjustsFontSizeToFitWidth = true
